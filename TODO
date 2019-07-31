@@ -1,0 +1,6 @@
+Manage state using redux (to store input data)
+Create encoding string with all the form data and see how many bytes it takes
+Design PDF
+Create PDF using encoded form data
+Include QR Code and encoded string in the pdf (just as in an invoice)
+Finish UI (homepage, add style etc)

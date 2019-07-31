@@ -1,35 +1,100 @@
-import React from "react";
+import React, { Component } from "react";
 import { Form } from "react-bootstrap";
 
-const Section4 = () => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        flex: 1
-      }}
-    >
-      <Form>
-        <Form.Row>
-          <Form.Check inline label="Normal Wear" type={"checkbox"} />
-          <Form.Check inline label="Nicked" type={"checkbox"} />
-          <Form.Check inline label="Beat Down" type={"checkbox"} />
-        </Form.Row>
-        <br />
-        <Form.Row>
-          <Form.Check inline label="Journal Rev" type={"checkbox"} />
-          <Form.Check inline label="Journal Repl" type={"checkbox"} />
-          <Form.Check inline label="Welds Req'd" type={"checkbox"} />
-        </Form.Row>
-        <br />
-        <Form.Row>
-          <Form.Check label="Chipped" type={"checkbox"} />
-          <Form.Check label="Abbrasive Wear" type={"checkbox"} />
-          <Form.Check label="Overall Blade Impact" type={"checkbox"} />
-        </Form.Row>
-      </Form>
-    </div>
-  );
-};
+class Section4 extends Component {
+  render() {
+    return (
+      <div
+        style={{
+          display: "flex",
+          flex: 1
+        }}
+      >
+        <div>
+          <Form.Row>
+            <Form.Check
+              custom
+              inline
+              label="Normal Wear"
+              type={"checkbox"}
+              name="normalWear"
+              id="normal-wear"
+            />
+            <Form.Check
+              custom
+              inline
+              label="Nicked"
+              type={"checkbox"}
+              name="nicked"
+              id="nicked"
+            />
+            <Form.Check
+              custom
+              inline
+              label="Beat Down"
+              type={"checkbox"}
+              name="beatDown"
+              id="beat-down"
+            />
+          </Form.Row>
+          <br />
+          <Form.Row>
+            <Form.Check
+              custom
+              inline
+              label="Journal Rev"
+              type={"checkbox"}
+              name="journalRev"
+              id="journal-rev"
+            />
+            <Form.Check
+              custom
+              inline
+              label="Journal Repl"
+              type={"checkbox"}
+              name="journalRepl"
+              id="journal-repl"
+            />
+            <Form.Check
+              custom
+              inline
+              label="Welds Required"
+              type={"checkbox"}
+              name="weldsRequired"
+              id="welds-required"
+            />
+          </Form.Row>
+          <br />
+          <Form.Row>
+            <Form.Check
+              custom
+              inline
+              label="Chipped"
+              type={"checkbox"}
+              name="chipped"
+              id="chipped"
+            />
+            <Form.Check
+              custom
+              inline
+              label="Abbrasive Wear"
+              type={"checkbox"}
+              name="abbrasiveWear"
+              id="abbrasive-wear"
+            />
+            <Form.Check
+              custom
+              inline
+              label="Overall Blade Impact"
+              type={"checkbox"}
+              name="overallBladeImpact"
+              id="overall-blade-impact"
+            />
+          </Form.Row>
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Section4;
