@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/jamesgdiaz.github.io/rotometrics-ref/precache-manifest.ba698b91f28e66d686cc2c2772b4745e.js"
+  "/jamesgdiaz.github.io/rotometrics-ref/precache-manifest.554dde8be31825cbe75e384ca445b2a1.js"
 );
 
 self.addEventListener('message', (event) => {

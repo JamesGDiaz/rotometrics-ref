@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e6d99394c513ce2924e9e5d53d36ad48",
+    "revision": "d487a2d4f041e4ca70a406ebf6098f83",
     "url": "/jamesgdiaz.github.io/rotometrics-ref/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/jamesgdiaz.github.io/rotometrics-ref/static/css/2.4482b0e7.chunk.css"
   },
   {
-    "revision": "1f681451521d89ff7f50",
+    "revision": "0bedd4ecb31398d4d467",
     "url": "/jamesgdiaz.github.io/rotometrics-ref/static/css/main.1fa56576.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/jamesgdiaz.github.io/rotometrics-ref/static/js/2.f091391d.chunk.js"
   },
   {
-    "revision": "1f681451521d89ff7f50",
-    "url": "/jamesgdiaz.github.io/rotometrics-ref/static/js/main.90591d89.chunk.js"
+    "revision": "0bedd4ecb31398d4d467",
+    "url": "/jamesgdiaz.github.io/rotometrics-ref/static/js/main.a8c5a934.chunk.js"
   },
   {
     "revision": "49bb38582faafc702b91",
