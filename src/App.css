@@ -1,0 +1,14 @@
+.App {
+  display: block;
+  text-align: center;
+}
+
+.Body {
+  background: #fafafa;
+  min-height: 100vh;
+  min-width: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  z-index: 1;
+}
