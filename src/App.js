@@ -18,13 +18,18 @@ class App extends Component {
               <Switch>
                 <Route path="/" component={Home} exact />
                 <Route path="/new" component={NewForm} exact />
-                <Route path="/print" component={PrintPDF} exact />
-                <Route component={Error} />
+                <Route path="/print/:data" component={PrintPDF} exact />
               </Switch>
               <div className="footer">
                 <Image />
                 <p className="text-center font-weight-light sm">
-                  {"Created by Rose Labs"}
+                  {"Created by Rose Labs. Powered by  "}
+                  <Image
+                    src={require("./assets/react-icon.png")}
+                    width={"20px"}
+                    height={"20px"}
+                  />
+                  {"ReactJS"}
                 </p>
               </div>
             </div>

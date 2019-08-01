@@ -13,7 +13,13 @@ class Section5 extends Component {
                   GS Bearer Dia
                 </InputGroup.Text>
               </InputGroup.Prepend>
-              <Form.Control aria-label="default" name="gsBearerDia" />
+              <Form.Control
+                aria-label="default"
+                name="gsBearerDia"
+                onChange={this.props.handleChange}
+                value={this.props.values.gsBearerDia}
+                isInvalid={!!this.props.errors.gsBearerDia}
+              />
             </InputGroup>
             <InputGroup as={Col} className="mb-3">
               <InputGroup.Prepend>
@@ -21,7 +27,13 @@ class Section5 extends Component {
                   Non GS Bearer Dia
                 </InputGroup.Text>
               </InputGroup.Prepend>
-              <Form.Control aria-label="default" name="nonGSBearerDia" />
+              <Form.Control
+                aria-label="default"
+                name="nonGSBearerDia"
+                onChange={this.props.handleChange}
+                value={this.props.values.nonGSBearerDia}
+                isInvalid={!!this.props.errors.nonGSBearerDia}
+              />
             </InputGroup>
           </Form.Row>
 
@@ -36,6 +48,9 @@ class Section5 extends Component {
                 as="select"
                 aria-label="default"
                 name="customSamples"
+                onChange={this.props.handleChange}
+                value={this.props.values.customSamples}
+                isInvalid={!!this.props.errors.customSamples}
               >
                 <option>No</option>
                 <option>Yes</option>
@@ -47,7 +62,13 @@ class Section5 extends Component {
                   No. of corners
                 </InputGroup.Text>
               </InputGroup.Prepend>
-              <Form.Control aria-label="default" name="numberOfCorners" />
+              <Form.Control
+                aria-label="default"
+                name="numberOfCorners"
+                onChange={this.props.handleChange}
+                value={this.props.values.numberOfCorners}
+                isInvalid={!!this.props.errors.numberOfCorners}
+              />
             </InputGroup>
           </Form.Row>
           <Form.Row>
@@ -57,7 +78,13 @@ class Section5 extends Component {
                   Grind Estimate
                 </InputGroup.Text>
               </InputGroup.Prepend>
-              <Form.Control aria-label="default" name="grindEstimate" />
+              <Form.Control
+                aria-label="default"
+                name="grindEstimate"
+                onChange={this.props.handleChange}
+                value={this.props.values.grindEstimate}
+                isInvalid={!!this.props.errors.grindEstimate}
+              />
             </InputGroup>
           </Form.Row>
           <Form.Check
@@ -67,6 +94,9 @@ class Section5 extends Component {
             type={"checkbox"}
             id="sec-5-silicone-cavities"
             name="siliconeCavities"
+            onChange={this.props.handleChange}
+            value={this.props.values.siliconeCavities}
+            isInvalid={!!this.props.errors.siliconeCavities}
           />
           <Form.Check
             custom
@@ -75,6 +105,9 @@ class Section5 extends Component {
             type={"checkbox"}
             id="sec-5-pattern-change"
             name="patternChange"
+            onChange={this.props.handleChange}
+            value={this.props.values.patternChange}
+            isInvalid={!!this.props.errors.patternChange}
           />
           <Form.Check
             custom
@@ -83,6 +116,9 @@ class Section5 extends Component {
             type={"checkbox"}
             id="sec-5-foam-cavities"
             name="foamCavities"
+            onChange={this.props.handleChange}
+            value={this.props.values.foamCavities}
+            isInvalid={!!this.props.errors.foamCavities}
           />
           <Form.Check
             custom
@@ -91,6 +127,9 @@ class Section5 extends Component {
             type={"checkbox"}
             id="sec-5-non-stick"
             name="nonStick"
+            onChange={this.props.handleChange}
+            value={this.props.values.nonStick}
+            isInvalid={!!this.props.errors.nonStick}
           />
           <Form.Check
             custom
@@ -99,6 +138,9 @@ class Section5 extends Component {
             type={"checkbox"}
             id="sec-5-qc-sheet"
             name="qcSheet"
+            onChange={this.props.handleChange}
+            value={this.props.values.qcSheet}
+            isInvalid={!!this.props.errors.qcSheet}
           />
         </div>
       </div>

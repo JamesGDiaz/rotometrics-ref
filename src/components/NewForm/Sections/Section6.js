@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 import { FormControl, InputGroup } from "react-bootstrap";
 class Section6 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      handleChange: props.handleChange,
+      values: props.values,
+      isValid: props.isValid,
+      errors: props.errors,
+      touch: props.touch
+    };
+  }
   render() {
     return (
       <div>
@@ -17,6 +27,9 @@ class Section6 extends Component {
             aria-label="Default"
             aria-describedby="inputGroup-sizing-default"
             name="sparePartsToBeReturned"
+            onChange={this.state.handleChange}
+            value={this.state.values.sparePartsToBeReturned}
+            isInvalid={!!this.state.errors.sparePartsToBeReturned}
           />
         </InputGroup>
         <InputGroup className="mb-3">
@@ -31,6 +44,9 @@ class Section6 extends Component {
             aria-label="Default"
             aria-describedby="inputGroup-sizing-default"
             name="remarks"
+            onChange={this.state.handleChange}
+            value={this.state.values.remarks}
+            isInvalid={!!this.state.errors.remarks}
           />
         </InputGroup>
       </div>

@@ -21,30 +21,24 @@ import newFormSchema from "./NewFormSchema";
 import "./NewForm.css";
 
 class NewForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      today: `${new Date().getMonth() +
-        1}/${new Date().getDate()}/${new Date().getFullYear()}`
-    };
-    console.log(this.state.today);
-  }
-  componentDidUpdate(prevProps, prevState) {
-    console.log(this.state);
-  }
-
   render() {
     return (
       <div className="NewForm">
         <Formik
           validationSchema={newFormSchema}
-          onSubmit={values => {
-            // same shape as initial values
-            console.log("Submitting");
-            console.log(values);
+          onSubmit={(values, actions) => {
+            const encodedQuote = btoa(JSON.stringify(values));
+            setTimeout(() => {
+              console.log("done");
+              actions.setSubmitting(false);
+              this.props.history.push(`print/${encodedQuote.toString()}`);
+            }, 400);
           }}
           initialValues={{
-            dateReceived: this.state.today
+            dateReceived: `${new Date().getMonth() +
+              1}/${new Date().getDate()}/${new Date().getFullYear()}`,
+            ppa1: "8c20",
+            ppa2: "32dp"
           }}
         >
           {({
@@ -62,8 +56,8 @@ class NewForm extends Component {
                 className="Button"
                 type="submit"
                 variant="outline-primary"
-                size="lg"
                 disabled={isSubmitting}
+                size="lg"
               >
                 {!isSubmitting ? (
                   <div>
@@ -71,7 +65,9 @@ class NewForm extends Component {
                     <FontAwesomeIcon icon={faFilePdf} />
                   </div>
                 ) : (
-                  <Spinner animation="border" variant="primary" />
+                  <div>
+                    Creating... <Spinner animation="border" variant="primary" />
+                  </div>
                 )}
               </Button>
               <Accordion defaultActiveKey="0">
@@ -191,7 +187,9 @@ class NewForm extends Component {
                     <FontAwesomeIcon icon={faFilePdf} />
                   </div>
                 ) : (
-                  <Spinner animation="border" variant="primary" />
+                  <div>
+                    Creating... <Spinner animation="border" variant="primary" />
+                  </div>
                 )}
               </Button>
             </Form>

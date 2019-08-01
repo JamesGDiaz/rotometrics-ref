@@ -5,8 +5,8 @@ const newFormSchema = Yup.object().shape({
    * Section 1
    * Order data
    */
+
   inspectedBy: Yup.string()
-    .min(1, "Please enter your name")
     .max(70, "The name is too long")
     .required("Please enter your name"),
   quoteNumber: Yup.string()
@@ -14,33 +14,25 @@ const newFormSchema = Yup.object().shape({
     .required("This field is required"),
   dateReceived: Yup.date().required("This field is required"),
   customerName: Yup.string()
-    .min(1, "Please enter the customer name")
     .max(70, "Too long")
     .required("This field is required"),
-  po: Yup.string()
-    .max(25, "Too long")
-    .required("This field is required"),
-  prevRepairOrder: Yup.string()
-    .max(25, "Too long")
-    .required("This field is required"),
-  complaint: Yup.boolean(),
+  po: Yup.string().max(25, "Too long"),
+  prevRepairOrder: Yup.string().max(25, "Too long"),
+  complaint: Yup.boolean().default(false),
 
   /**
    * Section 2
    * Die Characteristics
    */
-  demandClass: Yup.number(),
-  dieType: Yup.number(),
-  serialNumber: Yup.string()
-    .max(35, "Too long")
-    .required("This field is required"),
+  demandClass: Yup.string(),
+  dieType: Yup.string(),
+  serialNumber: Yup.string().max(35, "Too long"),
   customSpecialMark: Yup.string().max(25),
   numberOfTeeth: Yup.number()
     .integer("Please input a valid integer value")
     .min(1)
-    .max(1024)
-    .required("This field is required"),
-  replaceGear: Yup.number(),
+    .max(1024),
+  replaceGear: Yup.string(),
   gearsReturned: Yup.number()
     .min(1)
     .max(30),
@@ -64,15 +56,15 @@ const newFormSchema = Yup.object().shape({
    * Section 3
    * Cavities Data
    */
-  cavityType: Yup.number(),
-  specialCavityType: Yup.number(),
+  cavityType: Yup.string(),
+  specialCavityType: Yup.string(),
   numberAcross: Yup.number(),
   sizeAcross: Yup.string(),
   numberAround: Yup.number(),
   sizeAround: Yup.string(),
   engCav: Yup.string(),
   totEngAmt: Yup.number(),
-  perf: Yup.boolean(),
+  perf: Yup.string(),
   siNumber: Yup.string(),
 
   /**
@@ -97,7 +89,7 @@ const newFormSchema = Yup.object().shape({
    */
   gsBearerDia: Yup.string(),
   nonGSBearerDia: Yup.string(),
-  customSamples: Yup.boolean(),
+  customSamples: Yup.string(),
   numberOfCorners: Yup.number(),
   grindEstimate: Yup.string(),
   siliconeCavities: Yup.boolean(),

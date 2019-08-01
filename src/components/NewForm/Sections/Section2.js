@@ -2,20 +2,44 @@ import React, { Component } from "react";
 import { Form, FormControl, InputGroup, Col } from "react-bootstrap";
 
 class Section2 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      handleChange: props.handleChange,
+      values: props.values,
+      isValid: props.isValid,
+      errors: props.errors,
+      touch: props.touch,
+      today: `${new Date().getMonth() +
+        1}/${new Date().getDate()}/${new Date().getFullYear()}`
+    };
+  }
   render() {
     return (
       <div>
         <Form.Row>
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Demand Class:</Form.Label>
-            <Form.Control as="select" name="demandClass">
+            <Form.Control
+              as="select"
+              name="demandClass"
+              onChange={this.props.handleChange}
+              value={this.props.values.demandClass}
+              isInvalid={!!this.props.errors.demandClass}
+            >
               <option>Standard</option>
               <option>Red Tag</option>
             </Form.Control>
           </Form.Group>
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Die Type:</Form.Label>
-            <Form.Control as="select" name="dieType">
+            <Form.Control
+              as="select"
+              name="dieType"
+              onChange={this.props.handleChange}
+              value={this.props.values.dieType}
+              isInvalid={!!this.props.errors.dieType}
+            >
               <option>Rotometrics</option>
               <option>NRT</option>
               <option>Varitool</option>
@@ -24,24 +48,45 @@ class Section2 extends Component {
         </Form.Row>
         <Form.Row>
           <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Control placeholder="Serial No." name="serialNumber" />
+            <Form.Control
+              placeholder="Serial No."
+              name="serialNumber"
+              onChange={this.props.handleChange}
+              value={this.props.values.serialNumber}
+              isInvalid={!!this.props.errors.serialNumber}
+            />
           </Form.Group>
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Control
               placeholder="Cust. Special Mark"
-              name="custom-special-mark"
+              name="customSpecialMark"
+              onChange={this.props.handleChange}
+              value={this.props.values.customSpecialMark}
+              isInvalid={!!this.props.errors.customSpecialMark}
             />
           </Form.Group>
         </Form.Row>
         <Form.Row>
           <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Control placeholder="# of teeth*" name="numberOfTeeth" />
+            <Form.Control
+              placeholder="# of teeth*"
+              name="numberOfTeeth"
+              onChange={this.props.handleChange}
+              value={this.props.values.numberOfTeeth}
+              isInvalid={!!this.props.errors.numberOfTeeth}
+            />
           </Form.Group>
         </Form.Row>
         <Form.Row>
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Replace Gear</Form.Label>
-            <Form.Control as="select" name="replaceGear">
+            <Form.Control
+              as="select"
+              name="replaceGear"
+              onChange={this.props.handleChange}
+              value={this.props.values.replaceGear}
+              isInvalid={!!this.props.errors.replaceGear}
+            >
               <option>None</option>
               <option>Primary</option>
               <option>Secondary</option>
@@ -49,7 +94,13 @@ class Section2 extends Component {
           </Form.Group>
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Gears returned</Form.Label>
-            <Form.Control as="select" name="gearsReturned">
+            <Form.Control
+              as="select"
+              name="gearsReturned"
+              onChange={this.props.handleChange}
+              value={this.props.values.gearsReturned}
+              isInvalid={!!this.props.errors.gearsReturned}
+            >
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -87,9 +138,26 @@ class Section2 extends Component {
             <InputGroup.Prepend>
               <InputGroup.Text>PPA</InputGroup.Text>
             </InputGroup.Prepend>
-            <FormControl placeholder="8c20" name="ppa1" />
-            <FormControl placeholder="32dp" name="ppa2" />
-            <FormControl name="ppa3" />
+            <FormControl
+              placeholder="8c20"
+              name="ppa1"
+              onChange={this.props.handleChange}
+              value={this.props.values.ppa1}
+              isInvalid={!!this.props.errors.ppa1}
+            />
+            <FormControl
+              placeholder="32dp"
+              name="ppa2"
+              onChange={this.props.handleChange}
+              value={this.props.values.ppa2}
+              isInvalid={!!this.props.errors.ppa2}
+            />
+            <FormControl
+              name="ppa3"
+              onChange={this.props.handleChange}
+              value={this.props.values.ppa3}
+              isInvalid={!!this.props.errors.ppa3}
+            />
           </InputGroup>
         </Form.Row>
         <Form.Row>
@@ -103,6 +171,9 @@ class Section2 extends Component {
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
               name="face"
+              onChange={this.props.handleChange}
+              value={this.props.values.face}
+              isInvalid={!!this.props.errors.face}
             />
           </InputGroup>
           <InputGroup as={Col} className="mb-3">
@@ -115,6 +186,9 @@ class Section2 extends Component {
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
               name="gearBore"
+              onChange={this.props.handleChange}
+              value={this.props.values.gearBore}
+              isInvalid={!!this.props.errors.gearBore}
             />
           </InputGroup>
           <InputGroup as={Col} className="mb-3">
@@ -127,6 +201,9 @@ class Section2 extends Component {
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
               name="gearDWG"
+              onChange={this.props.handleChange}
+              value={this.props.values.gearDWG}
+              isInvalid={!!this.props.errors.gearDWG}
             />
           </InputGroup>
         </Form.Row>
@@ -141,6 +218,9 @@ class Section2 extends Component {
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
               name="hubDiameter"
+              onChange={this.props.handleChange}
+              value={this.props.values.hubDiameter}
+              isInvalid={!!this.props.errors.hubDiameter}
             />
           </InputGroup>
           <InputGroup as={Col} className="mb-3">
@@ -153,6 +233,9 @@ class Section2 extends Component {
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
               name="insideBearerLength"
+              onChange={this.props.handleChange}
+              value={this.props.values.insideBearerLength}
+              isInvalid={!!this.props.errors.insideBearerLength}
             />
           </InputGroup>
           <InputGroup as={Col} className="mb-3">
@@ -165,6 +248,9 @@ class Section2 extends Component {
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
               name="overallWidth"
+              onChange={this.props.handleChange}
+              value={this.props.values.overallWidth}
+              isInvalid={!!this.props.errors.overallWidth}
             />
           </InputGroup>
         </Form.Row>
@@ -179,6 +265,9 @@ class Section2 extends Component {
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
               name="weigth"
+              onChange={this.props.handleChange}
+              value={this.props.values.weigth}
+              isInvalid={!!this.props.errors.weigth}
             />
           </InputGroup>
           <InputGroup as={Col} className="mb-3">
@@ -191,6 +280,9 @@ class Section2 extends Component {
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
               name="overallLength"
+              onChange={this.props.handleChange}
+              value={this.props.values.overallLength}
+              isInvalid={!!this.props.errors.overallLength}
             />
           </InputGroup>
           <InputGroup as={Col} className="mb-3">
@@ -203,6 +295,9 @@ class Section2 extends Component {
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
               name="bodyLength"
+              onChange={this.props.handleChange}
+              value={this.props.values.bodyLength}
+              isInvalid={!!this.props.errors.bodyLength}
             />
           </InputGroup>
         </Form.Row>
@@ -217,6 +312,9 @@ class Section2 extends Component {
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
               name="bearerWidth"
+              onChange={this.props.handleChange}
+              value={this.props.values.bearerWidth}
+              isInvalid={!!this.props.errors.bearerWidth}
             />
           </InputGroup>
           <InputGroup as={Col} className="mb-3">
@@ -229,6 +327,9 @@ class Section2 extends Component {
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
               name="originalJob"
+              onChange={this.props.handleChange}
+              value={this.props.values.originalJob}
+              isInvalid={!!this.props.errors.originalJob}
             />
           </InputGroup>
           <InputGroup as={Col} className="mb-3">
@@ -241,6 +342,9 @@ class Section2 extends Component {
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
               name="pd"
+              onChange={this.props.handleChange}
+              value={this.props.values.pd}
+              isInvalid={!!this.props.errors.pd}
             />
           </InputGroup>
         </Form.Row>

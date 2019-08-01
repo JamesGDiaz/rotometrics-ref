@@ -1,17 +1,6 @@
 import React, { Component } from "react";
 import { Form, FormControl, InputGroup, Col } from "react-bootstrap";
 class Section1 extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      handleChange: props.handleChange,
-      values: props.values,
-      isValid: props.isValid,
-      errors: props.errors,
-      touch: props.touch
-    };
-    console.log(this.state);
-  }
   render() {
     return (
       <div>
@@ -25,8 +14,9 @@ class Section1 extends Component {
             aria-label="Default"
             aria-describedby="inputGroup-sizing-default"
             name="inspectedBy"
-            onChange={this.state.handleChange}
-            value={this.state.values.inspectedBy}
+            onChange={this.props.handleChange}
+            value={this.props.values.inspectedBy}
+            isInvalid={!!this.props.errors.inspectedBy}
           />
         </InputGroup>
         <Form.Row>
@@ -40,8 +30,9 @@ class Section1 extends Component {
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
               name="quoteNumber"
-              onChange={this.state.handleChange}
-              value={this.state.values.quoteNumber}
+              onChange={this.props.handleChange}
+              value={this.props.values.quoteNumber}
+              isInvalid={!!this.props.errors.quoteNumber}
             />
           </InputGroup>
           <InputGroup as={Col} className="mb-3">
@@ -53,8 +44,9 @@ class Section1 extends Component {
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
               name="dateReceived"
-              onChange={this.state.handleChange}
-              value={this.state.values.dateReceived}
+              onChange={this.props.handleChange}
+              value={this.props.values.dateReceived}
+              isInvalid={!!this.props.errors.dateReceived}
             />
           </InputGroup>
         </Form.Row>
@@ -65,8 +57,9 @@ class Section1 extends Component {
           </InputGroup.Prepend>
           <FormControl
             name="customerName"
-            onChange={this.state.handleChange}
-            value={this.state.values.customerName}
+            onChange={this.props.handleChange}
+            value={this.props.values.customerName}
+            isInvalid={!!this.props.errors.customerName}
           />
         </InputGroup>
         <Form.Row>
@@ -76,8 +69,9 @@ class Section1 extends Component {
             </InputGroup.Prepend>
             <FormControl
               name="po"
-              onChange={this.state.handleChange}
-              value={this.state.values.po}
+              onChange={this.props.handleChange}
+              value={this.props.values.po}
+              isInvalid={!!this.props.errors.po}
             />
           </InputGroup>
           <InputGroup as={Col} className="mb-3">
@@ -86,8 +80,9 @@ class Section1 extends Component {
             </InputGroup.Prepend>
             <FormControl
               name="prevRepairOrder"
-              onChange={this.state.handleChange}
-              value={this.state.values.prevRepairOrder}
+              onChange={this.props.handleChange}
+              value={this.props.values.prevRepairOrder}
+              isInvalid={!!this.props.errors.prevRepairOrder}
             />
           </InputGroup>
         </Form.Row>
@@ -97,8 +92,8 @@ class Section1 extends Component {
               <InputGroup.Checkbox
                 aria-label="Was there a complaint?"
                 name="complaint"
-                onChange={this.state.handleChange}
-                value={this.state.values.complaint}
+                onChange={this.props.handleChange}
+                value={this.props.values.complaint}
               />
             </InputGroup.Prepend>
             <FormControl

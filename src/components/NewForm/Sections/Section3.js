@@ -8,7 +8,13 @@ class Section3 extends Component {
         <Form.Row>
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Cavity Type:</Form.Label>
-            <Form.Control as="select" name="cavityType">
+            <Form.Control
+              as="select"
+              name="cavityType"
+              onChange={this.props.handleChange}
+              value={this.props.values.cavityType}
+              isInvalid={!!this.props.errors.cavityType}
+            >
               <option>RCR</option>
               <option>Circle</option>
               <option>Ellipse</option>
@@ -21,7 +27,13 @@ class Section3 extends Component {
         <Form.Row>
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Special Cavity Type:</Form.Label>
-            <Form.Control as="select" name="specialCavityType">
+            <Form.Control
+              as="select"
+              name="specialCavityType"
+              onChange={this.props.handleChange}
+              value={this.props.values.specialCavityType}
+              isInvalid={!!this.props.errors.specialCavityType}
+            >
               <option>n/a</option>
               <option>Simple</option>
               <option>Moderate</option>
@@ -37,7 +49,13 @@ class Section3 extends Component {
                 No. ac
               </InputGroup.Text>
             </InputGroup.Prepend>
-            <Form.Control aria-label="default" name="numberAcross" />
+            <Form.Control
+              aria-label="default"
+              name="numberAcross"
+              onChange={this.props.handleChange}
+              value={this.props.values.numberAcross}
+              isInvalid={!!this.props.errors.numberAcross}
+            />
           </InputGroup>
           <InputGroup as={Col} className="mb-3">
             <InputGroup.Prepend>
@@ -45,7 +63,13 @@ class Section3 extends Component {
                 Size ac
               </InputGroup.Text>
             </InputGroup.Prepend>
-            <Form.Control aria-label="default" name="sizeAcross" />
+            <Form.Control
+              aria-label="default"
+              name="sizeAcross"
+              onChange={this.props.handleChange}
+              value={this.props.values.sizeAcross}
+              isInvalid={!!this.props.errors.sizeAcross}
+            />
           </InputGroup>
         </Form.Row>
         <Form.Row>
@@ -55,7 +79,13 @@ class Section3 extends Component {
                 No. ar
               </InputGroup.Text>
             </InputGroup.Prepend>
-            <Form.Control aria-label="default" name="numberAround" />
+            <Form.Control
+              aria-label="default"
+              name="numberAround"
+              onChange={this.props.handleChange}
+              value={this.props.values.numberAround}
+              isInvalid={!!this.props.errors.numberAround}
+            />
           </InputGroup>
           <InputGroup as={Col} className="mb-3">
             <InputGroup.Prepend>
@@ -63,7 +93,13 @@ class Section3 extends Component {
                 Size ar
               </InputGroup.Text>
             </InputGroup.Prepend>
-            <Form.Control aria-label="default" name="sizeAround" />
+            <Form.Control
+              aria-label="default"
+              name="sizeAround"
+              onChange={this.props.handleChange}
+              value={this.props.values.sizeAround}
+              isInvalid={!!this.props.errors.sizeAround}
+            />
           </InputGroup>
         </Form.Row>
         <Form.Row>
@@ -73,7 +109,13 @@ class Section3 extends Component {
                 Eng/Cav*:
               </InputGroup.Text>
             </InputGroup.Prepend>
-            <Form.Control aria-label="default" name="engCav" />
+            <Form.Control
+              aria-label="default"
+              name="engCav"
+              onChange={this.props.handleChange}
+              value={this.props.values.engCav}
+              isInvalid={!!this.props.errors.engCav}
+            />
           </InputGroup>
           <InputGroup as={Col} className="mb-3">
             <InputGroup.Prepend>
@@ -81,7 +123,13 @@ class Section3 extends Component {
                 Tot Eng Amt
               </InputGroup.Text>
             </InputGroup.Prepend>
-            <Form.Control aria-label="default" name="totalEngAmt" />
+            <Form.Control
+              aria-label="default"
+              name="totalEngAmt"
+              onChange={this.props.handleChange}
+              value={this.props.values.totalEngAmt}
+              isInvalid={!!this.props.errors.totalEngAmt}
+            />
           </InputGroup>
         </Form.Row>
         <Form.Row>
@@ -91,7 +139,14 @@ class Section3 extends Component {
                 Perf:
               </InputGroup.Text>
             </InputGroup.Prepend>
-            <Form.Control as="select" aria-label="default" name="perf">
+            <Form.Control
+              as="select"
+              aria-label="default"
+              name="perf"
+              onChange={this.props.handleChange}
+              value={this.props.values.perf}
+              isInvalid={!!this.props.errors.perf}
+            >
               <option>No</option>
               <option>Yes</option>
             </Form.Control>
@@ -102,7 +157,13 @@ class Section3 extends Component {
                 SI #:
               </InputGroup.Text>
             </InputGroup.Prepend>
-            <Form.Control aria-label="default" name="siNumber" />
+            <Form.Control
+              aria-label="default"
+              name="siNumber"
+              onChange={this.props.handleChange}
+              value={this.props.values.siNumber}
+              isInvalid={!!this.props.errors.siNumber}
+            />
           </InputGroup>
         </Form.Row>
       </div>
