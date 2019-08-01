@@ -33,16 +33,17 @@ export class DocumentTemplate {
         title={`${this.props.quoteNumber}-rotometrics`}
         creator={this.props.inspectedBy}
       >
-        <Page size="A4" style={Styles.page} orientation="landscape">
+        <Page size="A4" style={styles.page} orientation="landscape">
           <View
-            style={[
-              Styles.section,
-              { flexDirection: "column", borderBottom: "2px solid" }
-            ]}
+            style={[styles.section, { flex: 0.1, flexDirection: "column" }]}
+            debug={true}
           >
-            <View style={{ flexDirection: "row" }}>
-              <Image src={require("../../assets/rotometrics-logo.png")} />
-              <Title>REPAIR EVALUATION FORM</Title>
+            <View style={[styles.section, { flexDirection: "row" }]}>
+              <Image
+                src={require("../../assets/rotometrics-logo.png")}
+                style={{ width: 198, height: 40, marginRight: "30vw" }}
+              />
+              <Text style={styles.title}>REPAIR EVALUATION FORM</Text>
             </View>
             <View
               style={{
@@ -51,21 +52,21 @@ export class DocumentTemplate {
                 borderBottomWidth: "2px"
               }}
             >
-              <StrongText>Inspected By: </StrongText>
-              <Text style={Styles.text}>{this.props.inspectedBy}</Text>
-              <StrongText>Quote No.: </StrongText>
-              <Text style={Styles.text}>{this.props.quoteNumber}</Text>
-              <StrongText>Date Received: </StrongText>
-              <Text style={Styles.text}>{this.props.dateReceived}</Text>
-              <StrongText>Complaint: </StrongText>
-              <Text style={Styles.text}>
+              <Text style={styles.strongText}>Inspected By: </Text>
+              <Text style={styles.text}>{this.props.inspectedBy}</Text>
+              <Text style={styles.strongText}>Quote No.: </Text>
+              <Text style={styles.text}>{this.props.quoteNumber}</Text>
+              <Text style={styles.strongText}>Date Received: </Text>
+              <Text style={styles.text}>{this.props.dateReceived}</Text>
+              <Text style={styles.strongText}>Complaint: </Text>
+              <Text style={styles.text}>
                 {this.props.complaint ? "YES" : "NO"}
               </Text>
             </View>
           </View>
-          <View style={Styles.section}>
+          <View style={styles.section} debug={true}>
             <Text style={{ fontSize: "9pt", fontWeight: "200" }}>
-              {this.quotestring}
+              {this.props.quoteString}
             </Text>
           </View>
         </Page>
@@ -74,30 +75,33 @@ export class DocumentTemplate {
   }
 }
 
-//Styles
-export const Styles = StyleSheet.create({
+//styles
+export const styles = StyleSheet.create({
   page: {
+    display: "flex",
     flexDirection: "column",
     backgroundColor: "#ffffff"
   },
   section: {
-    margin: 10,
-    flexGrow: 1
+    margin: 2,
+    flex: 1
   },
   text: {
-    fontSize: "10pt"
+    fontSize: "10pt",
+    marginRight: "8pt"
+  },
+
+  //Styled Components
+  strongText: {
+    fontSize: "10pt",
+    fontFamily: "Helvetica",
+    fontWeight: 700
+  },
+
+  title: {
+    fontSize: "24pt",
+    fontFamily: "Helvetica",
+    fontWeight: 700,
+    textAlign: "left"
   }
 });
-
-//Styled Components
-export const StrongText = styled.Text`
-  font-size: 10pt;
-  font-family: "Helvetica";
-  font-weight: 18000;
-`;
-
-export const Title = styled.Text`
-  font-size: "16pt";
-  font-family: "Helvetica";
-  font-weight: 700;
-`;

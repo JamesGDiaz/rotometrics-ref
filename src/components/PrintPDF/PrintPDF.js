@@ -25,8 +25,10 @@ class PrintPDF extends Component {
       `${this.state.formObject.quoteNumber}-repair_order`
     );
     MyDocument.props = this.state.formObject;
-    return (
-      <div style={{ display: "flex", flex: 1, flexDirection: "column" }}>
+    MyDocument.props.quoteString = this.state.formString;
+
+    const DownloadLink = () => {
+      return (
         <PDFDownloadLink
           document={MyDocument.makeDocument()}
           fileName={`${MyDocument.fileName}.pdf`}
@@ -41,40 +43,50 @@ class PrintPDF extends Component {
             )
           }
         </PDFDownloadLink>
+      );
+    };
+
+    return (
+      <div style={{ display: "flex", flex: 1, flexDirection: "column" }}>
+        <DownloadLink />
         <PDFViewer style={{ flex: 1, margin: "3vmin" }}>
           {MyDocument.makeDocument()}
         </PDFViewer>
-        <div style={{ flexDirection: "row" }}>
+        <DownloadLink />
+        <div style={{ flexDirection: "row", marginTop: "12px" }}>
           <div style={{ flex: 0.5 }}>
             <p>
-              With this QRCode you can recover this quote. Just scan it, and
+              You can recover this quote with this QRCode. Just scan it, and
               enter the decoded data on this page:
               <br />
               <b>
                 {`${window.location.protocol}//${window.location.host}/print/`}
-                <i>decoded data</i>
+                <i>{this.state.formString.substring(0, 10)}...</i>
               </b>
             </p>
           </div>
-          <QRCode
-            value={this.state.formString}
-            level={"L"}
-            size={200}
-            includeMargin={true}
-          />
-          <p
-            style={{
-              marginLeft: "10vw",
-              marginRight: "10vw",
-              marginTop: "1vh",
-              marginBottom: "1vh",
-              fontSize: "9pt",
-              fontWeight: 200,
-              wordWrap: "break-word"
-            }}
-          >
-            {this.state.formString}
-          </p>
+          <div>
+            <QRCode
+              value={this.state.formString}
+              level={"L"}
+              size={200}
+              includeMargin={true}
+            />
+            <p
+              style={{
+                marginLeft: "10vw",
+                marginRight: "10vw",
+                marginTop: "1vh",
+                marginBottom: "1vh",
+                fontSize: "9pt",
+                fontStyle: "italic",
+                fontWeight: 250,
+                wordWrap: "break-word"
+              }}
+            >
+              {this.state.formString}
+            </p>
+          </div>
         </div>
       </div>
     );
