@@ -116,7 +116,6 @@ export class DocumentTemplate {
   }
 
   makeDocument() {
-    console.log(this.props.qrCodeData);
     return (
       <Document
         author={this.author}
@@ -494,7 +493,10 @@ export class DocumentTemplate {
                     alignSelf: "center"
                   }}
                 />
-                <Text style={[styles.lightText, { flex: 1 }]} wrap={false}>
+                <Text
+                  style={[styles.lightText, { flex: 1, textAlign: "left" }]}
+                  wrap={true}
+                >
                   {this.props.quoteString}
                 </Text>
               </Region>
@@ -520,12 +522,11 @@ export const styles = StyleSheet.create({
   text: {
     fontFamily: "Helvetica",
     fontSize: "10pt",
-    marginLeft: "2pt",
-    fontWeight: 1000
+    marginLeft: "2pt"
   },
   lightText: {
     fontFamily: "Helvetica",
-    fontSize: "9pt",
+    fontSize: "7pt",
     marginLeft: "2pt",
     fontStyle: "italic"
   },

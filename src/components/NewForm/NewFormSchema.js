@@ -7,14 +7,14 @@ const newFormSchema = Yup.object().shape({
    */
 
   inspectedBy: Yup.string()
-    .max(70, "The name is too long")
+    .max(60, "The name is too long")
     .required("Please enter your name"),
   quoteNumber: Yup.string()
     .max(20, "Too long")
     .required("This field is required"),
   dateReceived: Yup.date().required("This field is required"),
   customerName: Yup.string()
-    .max(70, "Too long")
+    .max(60, "Too long")
     .required("This field is required"),
   po: Yup.string().max(25, "Too long"),
   prevRepairOrder: Yup.string().max(25, "Too long"),
@@ -102,8 +102,8 @@ const newFormSchema = Yup.object().shape({
    * Section 6
    * Additional Info
    */
-  sparePartsToBeReturned: Yup.string().max("100"),
-  remarks: Yup.string().max("120")
+  sparePartsToBeReturned: Yup.string().max("60"),
+  remarks: Yup.string().max("80")
 });
 
 export default newFormSchema;
