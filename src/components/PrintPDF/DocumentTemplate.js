@@ -10,7 +10,6 @@ import {
   Canvas
 } from "@react-pdf/renderer";
 import styled from "@react-pdf/styled-components";
-import QRCode from "qrcode.react";
 
 //Document
 export class DocumentTemplate {
