@@ -23,7 +23,14 @@ class App extends Component {
               <div className="footer">
                 <Image />
                 <p className="text-center font-weight-light sm">
-                  {"Created by Rose Labs. Powered by  "}
+                  {"Created by "}
+                  <Image
+                    src={require("./assets/rose-labs-2.png")}
+                    width={"95px"}
+                    height={"71px"}
+                    style={{ marginBottom: "30px", marginLeft: "-1px" }}
+                  />
+                  {". Powered by  "}
                   <Image
                     src={require("./assets/react-icon.png")}
                     width={"20px"}

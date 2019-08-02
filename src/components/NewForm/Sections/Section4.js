@@ -10,7 +10,7 @@ class Section4 extends Component {
           flex: 1
         }}
       >
-        <div>
+        <div style={{ alignItems: "center" }}>
           <Form.Row>
             <Form.Check
               custom

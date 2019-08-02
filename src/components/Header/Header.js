@@ -35,7 +35,15 @@ class Header extends Component {
         >
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <LinkContainer to="/">
-            <Navbar.Brand className="navbarBrand">Rotometrics</Navbar.Brand>
+            <Navbar.Brand className="navbarBrand">
+              <img
+                alt="Rotometrics"
+                src={require("../../assets/rotometrics-logo.png")}
+                width="250"
+                height="57"
+                className="d-inline-block align-top"
+              />
+            </Navbar.Brand>
           </LinkContainer>
 
           {

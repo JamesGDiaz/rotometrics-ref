@@ -6,10 +6,11 @@ import {
   Document,
   Image,
   StyleSheet,
-  Font,
-  Canvas
+  Font
 } from "@react-pdf/renderer";
 import styled from "@react-pdf/styled-components";
+
+//Font.registerHyphenationCallback(word => [word]);
 
 //Document
 export class DocumentTemplate {
@@ -124,20 +125,27 @@ export class DocumentTemplate {
       >
         <Page size="A4" style={styles.page} orientation="landscape">
           <Region
-            style={{ flex: 0.1, flexDirection: "column" }}
+            style={{
+              flexDirection: "column",
+              height: "60pt",
+              borderBottomWidth: "2px",
+              borderColor: "#000000"
+            }}
             debug={false}
             id={"region1"}
           >
-            <View style={[styles.section, { flexDirection: "row" }]}>
+            <View style={{ flexDirection: "row", height: "35pt" }}>
               <Image
                 src={require("../../assets/rotometrics-logo.png")}
-                style={{ width: 198, height: 40, marginRight: "30vw" }}
+                style={{ width: 198, height: 46 }}
               />
               <Text style={styles.title}>REPAIR EVALUATION FORM</Text>
             </View>
             <View
               style={{
-                flexDirection: "row"
+                flexDirection: "row",
+                marginLeft: "25vw",
+                marginRight: "5vw"
               }}
             >
               <FieldContainer>
@@ -161,7 +169,7 @@ export class DocumentTemplate {
               </FieldContainer>
             </View>
           </Region>
-          <Region style={{ flex: 0.4 }} debug={false} id={"region2"}>
+          <Region style={{ height: "140pt" }} debug={false} id={"region2"}>
             <Row>
               <FieldContainer>
                 <StrongText>Customer: </StrongText>
@@ -269,9 +277,14 @@ export class DocumentTemplate {
               </FieldContainer>
             </Row>
           </Region>
-          <View style={[styles.section, { flexDirection: "row", flex: 0.4 }]}>
-            <View style={[styles.section, { flexDirection: "column" }]}>
-              <Region style={{ flex: 0.3 }} debug={false} id={"region3"}>
+          <View style={[styles.section, { flexDirection: "row", flex: 0.8 }]}>
+            <View
+              style={[
+                styles.section,
+                { flexDirection: "column", width: "70%" }
+              ]}
+            >
+              <Region style={{ height: "54pt" }} debug={false} id={"region3"}>
                 <FieldContainer>
                   <StrongText>*Cavity Type:</StrongText>
                   <Text style={styles.text}>{this.props.cavityType}</Text>
@@ -286,9 +299,9 @@ export class DocumentTemplate {
                 </FieldContainer>
               </Region>
               <Region debug={false} id={"region4"}>
-                <Text style={[styles.strongText, { fontSize: "11pt" }]}>
+                <StrongText style={{ marginLeft: "20pt", fontSize: "11pt" }}>
                   Check all that apply:{"\n\n"}
-                </Text>
+                </StrongText>
                 <Row>
                   <FieldContainer>
                     <StrongText>Normal Wear</StrongText>
@@ -416,7 +429,7 @@ export class DocumentTemplate {
                   </FieldContainer>
                 </Row>
               </Region>
-              <Region debug={false} id={"region7"}>
+              <Region debug={false} id={"region7"} style={{ flex: 1 }}>
                 <FieldContainer>
                   <StrongText>Spare Parts to be Returned: </StrongText>
                   <Text style={styles.text}>
@@ -483,19 +496,22 @@ export class DocumentTemplate {
               <Region
                 debug={false}
                 id="region8"
-                style={{ flexDirection: "row" }}
+                style={{ flexDirection: "column", flex: 2 }}
               >
                 <Image
                   cache={false}
                   src={this.props.qrCodeData}
                   style={{
-                    flex: 0.6,
+                    flex: 6,
                     alignSelf: "center"
                   }}
                 />
                 <Text
-                  style={[styles.lightText, { flex: 1, textAlign: "left" }]}
-                  wrap={true}
+                  style={[
+                    styles.lightText,
+                    { flex: 0.01, textAlign: "justify" }
+                  ]}
+                  wrap={false}
                 >
                   {this.props.quoteString}
                 </Text>
@@ -525,28 +541,29 @@ export const styles = StyleSheet.create({
     marginLeft: "2pt"
   },
   lightText: {
-    fontFamily: "Helvetica",
+    fontFamily: "Courier-Oblique",
     fontSize: "7pt",
-    marginLeft: "2pt",
-    fontStyle: "italic"
+    marginLeft: "4pt",
+    marginRight: "4pt"
   },
   title: {
     fontSize: "24pt",
     fontFamily: "Helvetica-Bold",
-    textAlign: "left",
-    alignSelf: "left",
-    flexWrap: "wrap"
+    marginLeft: "35vw"
   }
 });
 
 //Styled Components
 const FieldContainer = styled.View`
   margin: 1pt;
+  margin-top: 4pt;
+  margin-bottom: 8pt;
   flex-direction: row;
+  margin-right: 5pt;
+  margin-left: 15pt;
 `;
 const Region = styled.View`
   padding: 8pt;
-  flex: 1;
 `;
 const Row = styled.View`
   margin: 0;
@@ -556,5 +573,4 @@ const StrongText = styled.Text`
   font-size: 10pt;
   font-family: "Helvetica-Bold";
   font-style: bold;
-  margin-left: 6pt;
 `;

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import zlib from "zlib";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
-import Image from "react-bootstrap/Image";
 import { faFileDownload } from "@fortawesome/free-solid-svg-icons";
 import { PDFViewer, PDFDownloadLink } from "@react-pdf/renderer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -44,7 +43,10 @@ class PrintPDF extends Component {
   componentWillMount() {
     let formString = this.state.dirtyFormString
       .replace(/[-]/g, "+")
-      .replace(/[_]/g, "/");
+      .replace(/[_]/g, "/")
+      .replace(/(- )/g, "")
+      .replace(/(-%20)/g, "")
+      .replace(/(-^[\n])/g, "");
     zlib.gunzip(Buffer.from(formString, "base64"), (error, result) => {
       if (error) {
         console.error(error);
@@ -98,8 +100,8 @@ class PrintPDF extends Component {
               marginLeft: "3vmin",
               marginRight: "3vmin",
               marginTop: "3vmin",
-              minHeight: "40vh",
-              maxHeight: "70vh"
+              minHeight: "70vh",
+              maxHeight: "80vh"
             }}
           >
             {MyDocument.makeDocument()}

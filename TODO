@@ -1,3 +1,3 @@
 add stockSource, weldsRequired amount, gearSide and noGearReceived
-Arrange fields in PDF
+fix total eng amount and Select fields (not passing the right data)
 Finish UI (homepage, add style etc)
