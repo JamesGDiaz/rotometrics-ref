@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import zlib from "zlib";
 import { Accordion, Card, Button, Form, Spinner } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -27,18 +28,30 @@ class NewForm extends Component {
         <Formik
           validationSchema={newFormSchema}
           onSubmit={(values, actions) => {
-            const encodedQuote = btoa(JSON.stringify(values));
-            setTimeout(() => {
+            let compressedString;
+            zlib.gzip(JSON.stringify(values), (error, result) => {
+              compressedString = result
+                .toString("base64")
+                .replace(/[+]/g, "-")
+                .replace(/[/]/g, "_");
               console.log("done");
               actions.setSubmitting(false);
-              this.props.history.push(`print/${encodedQuote.toString()}`);
-            }, 400);
+              this.props.history.push(`print/${compressedString}`);
+            });
           }}
           initialValues={{
             dateReceived: `${new Date().getMonth() +
               1}/${new Date().getDate()}/${new Date().getFullYear()}`,
             ppa1: "8c20",
-            ppa2: "32dp"
+            ppa2: "32dp",
+            demandClass: "Standard",
+            dieType: "Rotometrics",
+            replaceGear: "None",
+            gearsReturned: 1,
+            cavityType: "RCR",
+            specialCavityType: "n/a",
+            perf: "No",
+            customSamples: "No"
           }}
         >
           {({

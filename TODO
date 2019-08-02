@@ -1,5 +1,3 @@
-Design PDF
-Create PDF using encoded form data
-Create encoding string with all the form data and see how many bytes it takes
-Include QR Code and encoded string in the pdf (just as in an invoice)
+add stockSource, weldsRequired amount, gearSide and noGearReceived
+Arrange fields in PDF
 Finish UI (homepage, add style etc)
