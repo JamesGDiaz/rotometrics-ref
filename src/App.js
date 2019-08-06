@@ -20,25 +20,25 @@ class App extends Component {
                 <Route path="/new" component={NewForm} exact />
                 <Route path="/print/:data" component={PrintPDF} exact />
               </Switch>
-              <div className="footer">
-                <Image />
-                <p className="text-center font-weight-light sm">
-                  {"Created by "}
-                  <Image
-                    src={require("./assets/rose-labs-2.png")}
-                    width={"95px"}
-                    height={"71px"}
-                    style={{ marginBottom: "30px", marginLeft: "-1px" }}
-                  />
-                  {". Powered by  "}
-                  <Image
-                    src={require("./assets/react-icon.png")}
-                    width={"20px"}
-                    height={"20px"}
-                  />
-                  {"ReactJS"}
-                </p>
-              </div>
+            </div>
+            <div className="footer">
+              <Image />
+              <p className="text-center font-weight-light sm">
+                {"Created by "}
+                <Image
+                  src={require("./assets/rose-labs-2.png")}
+                  width={"95px"}
+                  height={"71px"}
+                  style={{ marginBottom: "30px", marginLeft: "-1px" }}
+                />
+                {". Powered by  "}
+                <Image
+                  src={require("./assets/react-icon.png")}
+                  width={"20px"}
+                  height={"20px"}
+                />
+                {"ReactJS"}
+              </p>
             </div>
           </div>
         </BrowserRouter>

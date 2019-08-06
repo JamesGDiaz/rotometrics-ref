@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import zlib from "zlib";
-import { Accordion, Card, Button, Form, Spinner, Alert } from "react-bootstrap";
+import { Accordion, Card, Button, Form, Spinner } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFilePdf,

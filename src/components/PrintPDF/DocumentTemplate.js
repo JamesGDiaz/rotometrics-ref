@@ -5,8 +5,7 @@ import {
   View,
   Document,
   Image,
-  StyleSheet,
-  Font
+  StyleSheet
 } from "@react-pdf/renderer";
 import styled from "@react-pdf/styled-components";
 
