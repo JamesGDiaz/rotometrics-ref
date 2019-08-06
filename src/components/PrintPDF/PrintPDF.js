@@ -37,7 +37,7 @@ class PrintPDF extends Component {
       }
     );
 
-    console.log(this.state.formObject);
+    console.debug(this.state.formObject);
   };
 
   componentWillMount() {
@@ -76,7 +76,7 @@ class PrintPDF extends Component {
         return (
           <PDFDownloadLink
             document={MyDocument.makeDocument()}
-            fileName={`${MyDocument.fileName}.pdf`}
+            fileName={MyDocument.fileName}
           >
             {({ blob, url, loading, error }) =>
               loading ? (
@@ -92,7 +92,14 @@ class PrintPDF extends Component {
       };
 
       return (
-        <div style={{ display: "flex", flex: 1, flexDirection: "column" }}>
+        <div
+          style={{
+            display: "flex",
+            flex: 1,
+            flexDirection: "column",
+            padding: "5px"
+          }}
+        >
           <DownloadLink />
           <PDFViewer
             style={{
@@ -122,7 +129,7 @@ class PrintPDF extends Component {
           <div style={{ flexDirection: "row", marginTop: "12px" }}>
             <div style={{ flex: 0.5 }}>
               <p>
-                You can recover this quote with this QRCode. Just scan it, and
+                You can recover this quote using this QRCode. Just scan it, and
                 enter the decoded data on this page:
                 <br />
                 <b>

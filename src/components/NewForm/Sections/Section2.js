@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form, FormControl, InputGroup, Col } from "react-bootstrap";
+import { Field } from "formik";
 
 class Section2 extends Component {
   constructor(props) {
@@ -11,9 +12,12 @@ class Section2 extends Component {
       errors: props.errors,
       touch: props.touch,
       today: `${new Date().getMonth() +
-        1}/${new Date().getDate()}/${new Date().getFullYear()}`
+        1}/${new Date().getDate()}/${new Date().getFullYear()}`,
+      hubDiameter: "",
+      numberOfTeeth: ""
     };
   }
+
   render() {
     return (
       <div>
@@ -68,10 +72,21 @@ class Section2 extends Component {
         </Form.Row>
         <Form.Row>
           <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Control
-              placeholder="# of teeth*"
+            <Field
               name="numberOfTeeth"
+              render={({ field, form }) => (
+                <Form.Control
+                  {...field}
+                  placeholder="# of teeth*"
+                  onChange={e => {
+                    const hubDia = parseInt(e.target.value) / 8;
+                    this.props.handleChange(e);
+                    form.setFieldValue("hubDiameter", `${hubDia.toFixed(3)}"`);
+                  }}
+                />
+              )}
               onChange={this.props.handleChange}
+              onBlur={this.props.handleblur}
               value={this.props.values.numberOfTeeth}
               isInvalid={!!this.props.errors.numberOfTeeth}
             />
@@ -347,6 +362,19 @@ class Section2 extends Component {
               isInvalid={!!this.props.errors.pd}
             />
           </InputGroup>
+        </Form.Row>
+        <Form.Row>
+          <Form.Check
+            custom
+            inline
+            label="No gear received"
+            type={"checkbox"}
+            name="noGearReceived"
+            id="no-gear-received"
+            onChange={this.props.handleChange}
+            value={this.props.values.noGearReceived}
+            isInvalid={!!this.props.errors.noGearReceived}
+          />
         </Form.Row>
       </div>
     );

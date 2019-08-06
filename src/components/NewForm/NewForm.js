@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import zlib from "zlib";
-import { Accordion, Card, Button, Form, Spinner } from "react-bootstrap";
+import { Accordion, Card, Button, Form, Spinner, Alert } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFilePdf,
@@ -22,15 +22,30 @@ import newFormSchema from "./NewFormSchema";
 import "./NewForm.css";
 
 class NewForm extends Component {
+  listErrors = errors => {
+    if (Object.getOwnPropertyNames(errors).length > 0) {
+      return Object.getOwnPropertyNames(errors).map((value, index) => {
+        return (
+          <div className={"Error"} key={index}>
+            {value.replace(/([A-Z])/g, " $1").replace(/^./, function(str) {
+              return str.toUpperCase();
+            })}
+            , {errors[value]}
+          </div>
+        );
+      });
+    }
+  };
+
   render() {
     return (
       <div className="NewForm">
         <Formik
           validationSchema={newFormSchema}
+          onChange
           onSubmit={(values, actions) => {
-            let compressedString;
             zlib.gzip(JSON.stringify(values), (error, result) => {
-              compressedString = result
+              let compressedString = result
                 .toString("base64")
                 .replace(/[+]/g, "-")
                 .replace(/[/]/g, "_");
@@ -83,6 +98,9 @@ class NewForm extends Component {
                   </div>
                 )}
               </Button>
+              <div style={{ marginBottom: "16px" }}>
+                {this.listErrors(errors)}
+              </div>
               <Accordion defaultActiveKey="0">
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="0">

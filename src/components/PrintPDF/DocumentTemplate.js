@@ -128,8 +128,8 @@ export class DocumentTemplate {
             style={{
               flexDirection: "column",
               height: "60pt",
-              borderBottomWidth: "2px",
-              borderColor: "#000000"
+              borderBottom: "black",
+              borderBottomWidth: "1pt"
             }}
             debug={false}
             id={"region1"}
@@ -169,7 +169,15 @@ export class DocumentTemplate {
               </FieldContainer>
             </View>
           </Region>
-          <Region style={{ height: "140pt" }} debug={false} id={"region2"}>
+          <Region
+            style={{
+              height: "140pt",
+              borderBottom: "black",
+              borderBottomWidth: "1pt"
+            }}
+            debug={false}
+            id={"region2"}
+          >
             <Row>
               <FieldContainer>
                 <StrongText>Customer: </StrongText>
@@ -209,15 +217,38 @@ export class DocumentTemplate {
             <Row>
               <FieldContainer>
                 <StrongText>PPA:</StrongText>
-                <Text style={[styles.text, { border: "solid 1px #000000" }]}>
-                  {this.props.ppa1}
-                </Text>
-                <Text style={[styles.text, { border: "solid 1px #000000" }]}>
-                  {this.props.ppa2}
-                </Text>
-                <Text style={[styles.text, { border: "solid 1px #000000" }]}>
-                  {this.props.ppa3}
-                </Text>
+                <View
+                  style={{
+                    padding: "1",
+                    alignItems: "center",
+                    border: "black",
+                    borderWidth: "2pt"
+                  }}
+                >
+                  <Text style={styles.text}>{this.props.ppa1}</Text>
+                </View>
+                <View
+                  style={{
+                    padding: "1",
+                    alignItems: "center",
+                    border: "black",
+                    borderWidth: "2pt"
+                  }}
+                >
+                  <Text style={styles.text}>{this.props.ppa2}</Text>
+                </View>
+                <View
+                  style={{
+                    padding: "1",
+                    alignItems: "center",
+                    border: "black",
+                    borderWidth: "2pt"
+                  }}
+                >
+                  <Text style={styles.text}>
+                    {this.props.ppa3 ? this.props.ppa3 : "        "}
+                  </Text>
+                </View>
               </FieldContainer>
               <FieldContainer>
                 <StrongText>Replace Gear:</StrongText>
@@ -284,7 +315,17 @@ export class DocumentTemplate {
                 { flexDirection: "column", width: "70%" }
               ]}
             >
-              <Region style={{ height: "54pt" }} debug={false} id={"region3"}>
+              <Region
+                style={{
+                  height: "54pt",
+                  borderBottom: "black",
+                  borderRight: "black",
+                  borderBottomWidth: "1pt",
+                  borderRightWidth: "1pt"
+                }}
+                debug={false}
+                id={"region3"}
+              >
                 <FieldContainer>
                   <StrongText>*Cavity Type:</StrongText>
                   <Text style={styles.text}>{this.props.cavityType}</Text>
@@ -298,25 +339,34 @@ export class DocumentTemplate {
                   </Text>
                 </FieldContainer>
               </Region>
-              <Region debug={false} id={"region4"}>
+              <Region
+                debug={false}
+                id={"region4"}
+                style={{
+                  borderBottom: "black",
+                  borderRight: "black",
+                  borderBottomWidth: "1pt",
+                  borderRightWidth: "1pt"
+                }}
+              >
                 <StrongText style={{ marginLeft: "20pt", fontSize: "11pt" }}>
                   Check all that apply:{"\n\n"}
                 </StrongText>
                 <Row>
                   <FieldContainer>
-                    <StrongText>Normal Wear</StrongText>
+                    <StrongText>Normal Wear </StrongText>
                     <Text style={styles.text}>
                       {this.props.normalWear ? "YES" : "NO"}
                     </Text>
                   </FieldContainer>
                   <FieldContainer>
-                    <StrongText>Nicked</StrongText>
+                    <StrongText>Nicked </StrongText>
                     <Text style={styles.text}>
                       {this.props.nicked ? "YES" : "NO"}
                     </Text>
                   </FieldContainer>
                   <FieldContainer>
-                    <StrongText>Journal Rev</StrongText>
+                    <StrongText>Journal Rev </StrongText>
                     <Text style={styles.text}>
                       {this.props.journalRev ? "YES" : "NO"}
                     </Text>
@@ -324,46 +374,64 @@ export class DocumentTemplate {
                 </Row>
                 <Row>
                   <FieldContainer>
-                    <StrongText>Journal Repl</StrongText>
+                    <StrongText>Journal Repl </StrongText>
                     <Text style={styles.text}>
                       {this.props.journalRepl ? "YES" : "NO"}
                     </Text>
                   </FieldContainer>
                   <FieldContainer>
-                    <StrongText>Beat Down</StrongText>
+                    <StrongText>Beat Down </StrongText>
                     <Text style={styles.text}>
                       {this.props.beatDown ? "YES" : "NO"}
                     </Text>
                   </FieldContainer>
                   <FieldContainer>
-                    <StrongText>Welds req'd</StrongText>
+                    <StrongText>Welds req'd </StrongText>
                     <Text style={styles.text}>
                       {this.props.weldsRequired ? "YES" : "NO"}
                     </Text>
                   </FieldContainer>
+                  <FieldContainer
+                    style={{
+                      borderBottom: "black",
+                      borderBottomWidth: "1pt",
+                      paddingLeft: "8",
+                      paddingRight: "8",
+                      marginLeft: "-3"
+                    }}
+                  >
+                    <StrongText>{this.props.weldsRequiredAmount}</StrongText>
+                  </FieldContainer>
                 </Row>
                 <Row>
                   <FieldContainer>
-                    <StrongText>Chipped</StrongText>
+                    <StrongText>Chipped </StrongText>
                     <Text style={styles.text}>
                       {this.props.chipped ? "YES" : "NO"}
                     </Text>
                   </FieldContainer>
                   <FieldContainer>
-                    <StrongText>Abbrasive Wear</StrongText>
+                    <StrongText>Abbrasive Wear </StrongText>
                     <Text style={styles.text}>
                       {this.props.abbrasiveWear ? "YES" : "NO"}
                     </Text>
                   </FieldContainer>
                   <FieldContainer>
-                    <StrongText>Overall Blade Impact</StrongText>
+                    <StrongText>Overall Blade Impact </StrongText>
                     <Text style={styles.text}>
                       {this.props.overallBladeImpact ? "YES" : "NO"}
                     </Text>
                   </FieldContainer>
                 </Row>
               </Region>
-              <Region debug={false} id={"region6"}>
+              <Region
+                debug={false}
+                id={"region6"}
+                style={{
+                  borderRight: "black",
+                  borderRightWidth: "1pt"
+                }}
+              >
                 <Row>
                   <FieldContainer>
                     <StrongText>Silicone Cavities</StrongText>
@@ -429,9 +497,20 @@ export class DocumentTemplate {
                   </FieldContainer>
                 </Row>
               </Region>
-              <Region debug={false} id={"region7"} style={{ flex: 1 }}>
+              <Region
+                debug={false}
+                id={"region7"}
+                style={{
+                  borderRight: "black",
+                  borderRightWidth: "1pt",
+                  borderTop: "black",
+                  borderTopWidth: "1pt",
+                  textAlign: "justify"
+                }}
+                wrap={false}
+              >
                 <FieldContainer>
-                  <StrongText>Spare Parts to be Returned: </StrongText>
+                  <StrongText>Spare Parts to be Returned:</StrongText>
                   <Text style={styles.text}>
                     {this.props.sparePartsToBeReturned}
                   </Text>
@@ -440,10 +519,22 @@ export class DocumentTemplate {
                   <StrongText>Remarks: </StrongText>
                   <Text style={styles.text}>{this.props.remarks}</Text>
                 </FieldContainer>
+                <FieldContainer style={{ marginTop: "15" }}>
+                  <StrongText>
+                    * These fields are only required for NRP's
+                  </StrongText>
+                </FieldContainer>
               </Region>
             </View>
             <View style={styles.section}>
-              <Region debug={false} id={"region5"}>
+              <Region
+                debug={false}
+                id={"region5"}
+                style={{
+                  borderBottom: "black",
+                  borderBottomWidth: "1pt"
+                }}
+              >
                 <Row>
                   <FieldContainer>
                     <StrongText>*No. Ac.:</StrongText>
@@ -555,7 +646,6 @@ export const styles = StyleSheet.create({
 
 //Styled Components
 const FieldContainer = styled.View`
-  margin: 1pt;
   margin-top: 4pt;
   margin-bottom: 8pt;
   flex-direction: row;

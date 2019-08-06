@@ -7,17 +7,17 @@ const newFormSchema = Yup.object().shape({
    */
 
   inspectedBy: Yup.string()
-    .max(60, "The name is too long")
-    .required("Please enter your name"),
+    .max(60, "the name is too long")
+    .required("please enter your name"),
   quoteNumber: Yup.string()
-    .max(20, "Too long")
-    .required("This field is required"),
-  dateReceived: Yup.date().required("This field is required"),
+    .max(20, "too long")
+    .required("this field is required"),
+  dateReceived: Yup.date().required("this field is required"),
   customerName: Yup.string()
-    .max(60, "Too long")
-    .required("This field is required"),
-  po: Yup.string().max(25, "Too long"),
-  prevRepairOrder: Yup.string().max(25, "Too long"),
+    .max(60, "too long")
+    .required("please enter the customers' name"),
+  po: Yup.string().max(25, "too long"),
+  prevRepairOrder: Yup.string().max(25, "too long"),
   complaint: Yup.boolean().default(false),
 
   /**
@@ -25,11 +25,11 @@ const newFormSchema = Yup.object().shape({
    * Die Characteristics
    */
   demandClass: Yup.string(),
-  dieType: Yup.string(),
-  serialNumber: Yup.string().max(35, "Too long"),
+  dietype: Yup.string(),
+  serialNumber: Yup.string().max(35, "too long"),
   customSpecialMark: Yup.string().max(25),
-  numberOfTeeth: Yup.number()
-    .integer("Please input a valid integer value")
+  numberOfteeth: Yup.number()
+    .integer("please input a valid integer value")
     .min(1)
     .max(1024),
   replaceGear: Yup.string(),
@@ -39,37 +39,40 @@ const newFormSchema = Yup.object().shape({
   ppa1: Yup.string().max(11),
   ppa2: Yup.string().max(11),
   ppa3: Yup.string().max(11),
-  face: Yup.string().max(15, "Too long"),
-  gearBore: Yup.string().max(15, "Too long"),
-  gearDWG: Yup.string().max(15, "Too long"),
-  hubDiameter: Yup.string().max(15, "Too long"),
-  insideBearerLength: Yup.string().max(15, "Too long"),
-  overallWidth: Yup.string().max(15, "Too long"),
-  weight: Yup.string().max(15, "Too long"),
-  overallLength: Yup.string().max(15, "Too long"),
-  bodyLength: Yup.string().max(15, "Too long"),
-  bearerWidth: Yup.string().max(15, "Too long"),
-  originalJob: Yup.string().max(15, "Too long"),
-  pd: Yup.string().max(15, "Too long"),
+  face: Yup.string().max(15, "too long"),
+  gearBore: Yup.string().max(15, "too long"),
+  gearDWG: Yup.string().max(15, "too long"),
+  hubDiameter: Yup.string().max(15, "too long"),
+  insideBearerLength: Yup.string().max(15, "too long"),
+  overallWidth: Yup.string().max(15, "too long"),
+  weight: Yup.string().max(15, "too long"),
+  overallLength: Yup.string().max(15, "too long"),
+  bodyLength: Yup.string().max(15, "too long"),
+  bearerWidth: Yup.string().max(15, "too long"),
+  originalJob: Yup.string().max(15, "too long"),
+  pd: Yup.string().max(15, "too long"),
+  stockSource: Yup.string().max(15, "too long"),
+  gearSide: Yup.string().max(15, "too long"),
+  noGearReceived: Yup.boolean(),
 
   /**
    * Section 3
    * Cavities Data
    */
-  cavityType: Yup.string(),
-  specialCavityType: Yup.string(),
+  cavitytype: Yup.string(),
+  specialCavitytype: Yup.string(),
   numberAcross: Yup.number(),
-  sizeAcross: Yup.string(),
+  sizeAcross: Yup.string().max(15, "too long"),
   numberAround: Yup.number(),
-  sizeAround: Yup.string(),
-  engCav: Yup.string(),
+  sizeAround: Yup.string().max(15, "too long"),
+  engCav: Yup.string().max(15, "too long"),
   totEngAmt: Yup.number(),
   perf: Yup.string(),
-  siNumber: Yup.string(),
+  siNumber: Yup.string().max(15, "too long"),
 
   /**
    * Section 4
-   * Repair Type
+   * Repair type
    */
 
   normalWear: Yup.boolean(),
@@ -85,13 +88,13 @@ const newFormSchema = Yup.object().shape({
 
   /**
    * Section 5
-   * Repair Type #2
+   * Repair type #2
    */
-  gsBearerDia: Yup.string(),
-  nonGSBearerDia: Yup.string(),
-  customSamples: Yup.string(),
-  numberOfCorners: Yup.number(),
-  grindEstimate: Yup.string(),
+  gsBearerDia: Yup.string().max(15, "too long"),
+  nonGSBearerDia: Yup.string().max(15, "too long"),
+  customSamples: Yup.string().max(15, "too long"),
+  numberOfCorners: Yup.number().max(15, "too long"),
+  grindEstimate: Yup.string().max(15, "too long"),
   siliconeCavities: Yup.boolean(),
   patternChange: Yup.boolean(),
   foamCavities: Yup.boolean(),
@@ -102,8 +105,11 @@ const newFormSchema = Yup.object().shape({
    * Section 6
    * Additional Info
    */
-  sparePartsToBeReturned: Yup.string().max("60"),
-  remarks: Yup.string().max("80")
+  sparePartsToBeReturned: Yup.string().max(
+    "60",
+    "too long (limit is 60 characters)"
+  ),
+  remarks: Yup.string().max("80", "too long (limit is 80 characters)")
 });
 
 export default newFormSchema;

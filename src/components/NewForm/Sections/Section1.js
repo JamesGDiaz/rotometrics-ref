@@ -87,21 +87,15 @@ class Section1 extends Component {
           </InputGroup>
         </Form.Row>
         <Form.Row>
-          <InputGroup as={Col} className="mb-1">
-            <InputGroup.Prepend>
-              <InputGroup.Checkbox
-                aria-label="Was there a complaint?"
-                name="complaint"
-                onChange={this.props.handleChange}
-                value={this.props.values.complaint}
-              />
-            </InputGroup.Prepend>
-            <FormControl
-              placeholder="Was there a complaint?"
-              disabled
-              aria-label="Was there a complaint?"
-            />
-          </InputGroup>
+          <Form.Check
+            custom
+            name="complaint"
+            label="Was there a complaint?"
+            type={"checkbox"}
+            onChange={this.props.handleChange}
+            value={this.props.values.complaint}
+            id={"sec1-complaint"}
+          />
         </Form.Row>
       </div>
     );

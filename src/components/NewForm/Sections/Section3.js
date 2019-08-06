@@ -125,10 +125,10 @@ class Section3 extends Component {
             </InputGroup.Prepend>
             <Form.Control
               aria-label="default"
-              name="totalEngAmt"
+              name="totEngAmt"
               onChange={this.props.handleChange}
-              value={this.props.values.totalEngAmt}
-              isInvalid={!!this.props.errors.totalEngAmt}
+              value={this.props.values.totEngAmt}
+              isInvalid={!!this.props.errors.totEngAmt}
             />
           </InputGroup>
         </Form.Row>

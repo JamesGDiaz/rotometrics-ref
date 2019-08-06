@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Form } from "react-bootstrap";
+import { InputGroup, Col } from "react-bootstrap";
 
 class Section4 extends Component {
   render() {
@@ -70,17 +71,6 @@ class Section4 extends Component {
               value={this.props.values.journalRepl}
               isInvalid={!!this.props.errors.journalRepl}
             />
-            <Form.Check
-              custom
-              inline
-              label="Welds Required"
-              type={"checkbox"}
-              name="weldsRequired"
-              id="welds-required"
-              onChange={this.props.handleChange}
-              value={this.props.values.weldsRequired}
-              isInvalid={!!this.props.errors.weldsRequired}
-            />
           </Form.Row>
           <br />
           <Form.Row>
@@ -117,6 +107,47 @@ class Section4 extends Component {
               value={this.props.values.overallBladeImpact}
               isInvalid={!!this.props.errors.overallBladeImpact}
             />
+          </Form.Row>
+          <br />
+          <Form.Row>
+            {/*<Form.Check
+              custom
+              inline
+              label="Welds Required"
+              type={"checkbox"}
+              name="weldsRequired"
+              id="welds-required"
+              onChange={this.props.handleChange}
+              value={this.props.values.weldsRequired}
+              isInvalid={!!this.props.errors.weldsRequired}
+            />
+            <Form.Control
+              disabled
+              placeholder={"Qty"}
+              name={"weldsRequiredAmount"}
+              onChange={this.props.handleChange}
+              value={this.props.values.weldsRequiredAmount}
+              isInvalid={!!this.props.errors.weldsRequiredAmount}
+            />*/}
+            <InputGroup as={Col} className="mb-3">
+              <InputGroup.Prepend>
+                <InputGroup.Checkbox
+                  label="Welds Required"
+                  name="weldsRequired"
+                  id="welds-required"
+                  onChange={this.props.handleChange}
+                  value={this.props.values.weldsRequired}
+                />
+              </InputGroup.Prepend>
+              <Form.Control
+                aria-label="Amount of welds required"
+                placeholder={"Welds required "}
+                name={"weldsRequiredAmount"}
+                onChange={this.props.handleChange}
+                value={this.props.values.weldsRequiredAmount}
+                isInvalid={!!this.props.errors.weldsRequiredAmount}
+              />
+            </InputGroup>
           </Form.Row>
         </div>
       </div>

@@ -1,3 +1,2 @@
-add stockSource, weldsRequired amount, gearSide and noGearReceived
-fix total eng amount and Select fields (not passing the right data)
+add stockSource, gearSide and noGearReceived
 Finish UI (homepage, add style etc)
