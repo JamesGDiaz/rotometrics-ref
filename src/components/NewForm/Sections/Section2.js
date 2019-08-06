@@ -79,9 +79,9 @@ class Section2 extends Component {
                   {...field}
                   placeholder="# of teeth*"
                   onChange={e => {
-                    const hubDia = parseInt(e.target.value) / 8;
+                    const pd = parseInt(e.target.value) / 8;
                     this.props.handleChange(e);
-                    form.setFieldValue("hubDiameter", `${hubDia.toFixed(3)}"`);
+                    form.setFieldValue("pd", `${pd.toFixed(3)}"`);
                   }}
                 />
               )}
