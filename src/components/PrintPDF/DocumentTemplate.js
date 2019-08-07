@@ -409,17 +409,18 @@ export class DocumentTemplate {
               </FieldContainer>
             </Row>
           </Region>
-          <View style={[styles.section, { flexDirection: "row", flex: 0.8 }]}>
+          <View style={[styles.section, { flexDirection: "row" }]}>
             <View
               style={[
                 styles.section,
                 {
+                  flex: 1.3,
                   flexDirection: "column",
-                  width: "70%",
                   border: "black",
                   borderRightWidth: "2pt"
                 }
               ]}
+              debug={false}
             >
               <Region
                 style={{
@@ -749,7 +750,7 @@ export class DocumentTemplate {
                 debug={false}
                 id={"region7"}
                 style={{
-                  height: "46pt",
+                  height: "48pt",
                   borderBottom: "black",
                   borderBottomWidth: "2pt",
                   textAlign: "justify"
@@ -763,18 +764,27 @@ export class DocumentTemplate {
                       {this.props.tax ? "YES" : "NO"}
                     </Text>
                   </FieldContainer>
+                </Row>
+                <Row>
                   <FieldContainer>
                     <StrongText>Remarks: </StrongText>
-                    <Text style={styles.text}>{this.props.remarks}</Text>
+                    <Text style={[styles.text, { fontSize: "9pt" }]}>
+                      {this.props.remarks}
+                    </Text>
                   </FieldContainer>
                 </Row>
               </Region>
               <Region>
                 <FieldContainer>
-                  <Text style={[styles.text, { marginRight: "36pt" }]}>
+                  <Text
+                    style={[
+                      styles.text,
+                      { marginRight: "36pt", fontSize: "8pt" }
+                    ]}
+                  >
                     FCD-00229
                   </Text>
-                  <StrongText>
+                  <StrongText style={{ fontSize: "8pt" }}>
                     * These fields are only required for NRP's
                   </StrongText>
                 </FieldContainer>
@@ -822,7 +832,7 @@ export class DocumentTemplate {
                     <StrongText>*Cut type:</StrongText>
                     <Text style={styles.text}>{this.props.cutType}</Text>
                   </FieldContainer>
-                  <FieldContainer style={{ marginLeft: "96pt" }}>
+                  <FieldContainer style={{ marginLeft: "48pt" }}>
                     <StrongText>Position:</StrongText>
                     <Text style={styles.text}>{this.props.position}</Text>
                   </FieldContainer>
@@ -832,7 +842,7 @@ export class DocumentTemplate {
                     <StrongText>Label Application:</StrongText>
                     <Text style={styles.text}>{this.props.labelAppl}</Text>
                   </FieldContainer>
-                  <FieldContainer style={{ marginLeft: "72pt" }}>
+                  <FieldContainer style={{ marginLeft: "36pt" }}>
                     <StrongText>ME Log Number:</StrongText>
                     <Text style={styles.text}>{this.props.meLogNumber}</Text>
                   </FieldContainer>
@@ -907,10 +917,9 @@ const FieldContainer = styled.View`
   margin-left: 15pt;
 `;
 const Region = styled.View`
-  padding: 2pt;
+  padding: 1pt;
 `;
 const Row = styled.View`
-  margin: 0;
   flex-direction: row;
 `;
 const StrongText = styled.Text`
