@@ -13,7 +13,7 @@ class Section2 extends Component {
       touch: props.touch,
       today: `${new Date().getMonth() +
         1}/${new Date().getDate()}/${new Date().getFullYear()}`,
-      hubDiameter: "",
+      pd: "",
       numberOfTeeth: ""
     };
   }
@@ -22,19 +22,6 @@ class Section2 extends Component {
     return (
       <div>
         <Form.Row>
-          <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Label>Demand Class:</Form.Label>
-            <Form.Control
-              as="select"
-              name="demandClass"
-              onChange={this.props.handleChange}
-              value={this.props.values.demandClass}
-              isInvalid={!!this.props.errors.demandClass}
-            >
-              <option>Standard</option>
-              <option>Red Tag</option>
-            </Form.Control>
-          </Form.Group>
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Die Type:</Form.Label>
             <Form.Control
@@ -70,6 +57,7 @@ class Section2 extends Component {
             />
           </Form.Group>
         </Form.Row>
+
         <Form.Row>
           <Form.Group as={Col} controlId="formGridEmail">
             <Field
@@ -79,9 +67,9 @@ class Section2 extends Component {
                   {...field}
                   placeholder="# of teeth*"
                   onChange={e => {
-                    const hubDia = parseInt(e.target.value) / 8;
+                    const pd = parseInt(e.target.value) / (8 * 3.1415926);
                     this.props.handleChange(e);
-                    form.setFieldValue("hubDiameter", `${hubDia.toFixed(3)}"`);
+                    form.setFieldValue("pd", `${pd.toFixed(4)}"`);
                   }}
                 />
               )}
@@ -108,7 +96,7 @@ class Section2 extends Component {
             </Form.Control>
           </Form.Group>
           <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Label>Gears returned</Form.Label>
+            <Form.Label>Gears returned:</Form.Label>
             <Form.Control
               as="select"
               name="gearsReturned"
@@ -135,16 +123,6 @@ class Section2 extends Component {
               <option>18</option>
               <option>19</option>
               <option>20</option>
-              <option>21</option>
-              <option>22</option>
-              <option>23</option>
-              <option>24</option>
-              <option>25</option>
-              <option>26</option>
-              <option>27</option>
-              <option>28</option>
-              <option>29</option>
-              <option>30</option>
             </Form.Control>
           </Form.Group>
         </Form.Row>
@@ -154,14 +132,12 @@ class Section2 extends Component {
               <InputGroup.Text>PPA</InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl
-              placeholder="8c20"
               name="ppa1"
               onChange={this.props.handleChange}
               value={this.props.values.ppa1}
               isInvalid={!!this.props.errors.ppa1}
             />
             <FormControl
-              placeholder="32dp"
               name="ppa2"
               onChange={this.props.handleChange}
               value={this.props.values.ppa2}
@@ -176,21 +152,6 @@ class Section2 extends Component {
           </InputGroup>
         </Form.Row>
         <Form.Row>
-          <InputGroup as={Col} className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroup-sizing-default">
-                Face:
-              </InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
-              name="face"
-              onChange={this.props.handleChange}
-              value={this.props.values.face}
-              isInvalid={!!this.props.errors.face}
-            />
-          </InputGroup>
           <InputGroup as={Col} className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-default">
@@ -221,52 +182,23 @@ class Section2 extends Component {
               isInvalid={!!this.props.errors.gearDWG}
             />
           </InputGroup>
-        </Form.Row>
-        <Form.Row>
           <InputGroup as={Col} className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-default">
-                Hub Diameter:
+                Gear Condition:
               </InputGroup.Text>
             </InputGroup.Prepend>
-            <FormControl
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
-              name="hubDiameter"
+            <Form.Control
+              as="select"
+              aria-label="default"
+              name="gearCondition"
               onChange={this.props.handleChange}
-              value={this.props.values.hubDiameter}
-              isInvalid={!!this.props.errors.hubDiameter}
-            />
-          </InputGroup>
-          <InputGroup as={Col} className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroup-sizing-default">
-                Inside Bearer Length:
-              </InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
-              name="insideBearerLength"
-              onChange={this.props.handleChange}
-              value={this.props.values.insideBearerLength}
-              isInvalid={!!this.props.errors.insideBearerLength}
-            />
-          </InputGroup>
-          <InputGroup as={Col} className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroup-sizing-default">
-                Overall Width*:
-              </InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
-              name="overallWidth"
-              onChange={this.props.handleChange}
-              value={this.props.values.overallWidth}
-              isInvalid={!!this.props.errors.overallWidth}
-            />
+              value={this.props.values.gearCondition}
+            >
+              <option>Mashed</option>
+              <option>General Wear</option>
+              <option>Teeth worn</option>
+            </Form.Control>
           </InputGroup>
         </Form.Row>
         <Form.Row>
@@ -285,21 +217,7 @@ class Section2 extends Component {
               isInvalid={!!this.props.errors.weigth}
             />
           </InputGroup>
-          <InputGroup as={Col} className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroup-sizing-default">
-                Overall Length:
-              </InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
-              name="overallLength"
-              onChange={this.props.handleChange}
-              value={this.props.values.overallLength}
-              isInvalid={!!this.props.errors.overallLength}
-            />
-          </InputGroup>
+
           <InputGroup as={Col} className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-default">
@@ -347,6 +265,8 @@ class Section2 extends Component {
               isInvalid={!!this.props.errors.originalJob}
             />
           </InputGroup>
+        </Form.Row>
+        <Form.Row>
           <InputGroup as={Col} className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-default">
@@ -362,8 +282,24 @@ class Section2 extends Component {
               isInvalid={!!this.props.errors.pd}
             />
           </InputGroup>
+          <InputGroup as={Col} className="mb-3">
+            <InputGroup.Prepend>
+              <InputGroup.Text id="inputGroup-sizing-default">
+                Roll DWG:
+              </InputGroup.Text>
+            </InputGroup.Prepend>
+            <FormControl
+              aria-label="Default"
+              aria-describedby="inputGroup-sizing-default"
+              name="rollDWG"
+              onChange={this.props.handleChange}
+              value={this.props.values.rollDWG}
+              isInvalid={!!this.props.errors.rollDWG}
+            />
+          </InputGroup>
         </Form.Row>
         <Form.Row>
+          <div>Gear Side</div>
           <Form.Check
             custom
             inline

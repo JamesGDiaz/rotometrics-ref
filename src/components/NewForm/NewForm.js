@@ -17,6 +17,7 @@ import Section3 from "./Sections/Section3";
 import Section4 from "./Sections/Section4";
 import Section5 from "./Sections/Section5";
 import Section6 from "./Sections/Section6";
+import Section7 from "./Sections/Section7";
 import { Formik } from "formik";
 import newFormSchema from "./NewFormSchema";
 import "./NewForm.css";
@@ -44,7 +45,9 @@ class NewForm extends Component {
           validationSchema={newFormSchema}
           onChange
           onSubmit={(values, actions) => {
-            zlib.gzip(JSON.stringify(values), (error, result) => {
+            let json = JSON.stringify(values);
+            console.log(json);
+            zlib.gzip(json, (error, result) => {
               let compressedString = result
                 .toString("base64")
                 .replace(/[+]/g, "-")
@@ -61,11 +64,21 @@ class NewForm extends Component {
             ppa2: "32dp",
             demandClass: "Standard",
             dieType: "Rotometrics",
-            replaceGear: "None",
             gearsReturned: 1,
+            replaceGear: "None",
+            gearCondition: "Mashed",
+            cutType: "To Liner",
+            position: "Topcutter",
+            stockSource: "Rotometrics",
+            treatment: "None",
+            impression: "Light",
+            wheelMaterial: "RD80",
+            boxType: "#16",
+            crateRecdIn: "Good State",
+            tax: "No",
             cavityType: "RCR",
             specialCavityType: "n/a",
-            perf: "No",
+            labelAppl: "Manual",
             customSamples: "No"
           }}
         >
@@ -155,7 +168,7 @@ class NewForm extends Component {
                 </Card>
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="3">
-                    <FontAwesomeIcon icon={faTools} /> Repair Type
+                    <FontAwesomeIcon icon={faTools} /> Repair Data #1
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="3">
                     <Card.Body>
@@ -172,7 +185,7 @@ class NewForm extends Component {
                 </Card>
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="4">
-                    <FontAwesomeIcon icon={faTools} /> Repair Type #2
+                    <FontAwesomeIcon icon={faTools} /> Repair Data #2
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="4">
                     <Card.Body>
@@ -189,11 +202,28 @@ class NewForm extends Component {
                 </Card>
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="5">
-                    <FontAwesomeIcon icon={faPlusSquare} /> Additional Info
+                    <FontAwesomeIcon icon={faTools} /> Repair Data #3
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="5">
                     <Card.Body>
                       <Section6
+                        handleChange={handleChange}
+                        handleBlur={handleBlur}
+                        values={values}
+                        touched={touched}
+                        isValid={isValid}
+                        errors={errors}
+                      />
+                    </Card.Body>
+                  </Accordion.Collapse>
+                </Card>
+                <Card>
+                  <Accordion.Toggle as={Card.Header} eventKey="6">
+                    <FontAwesomeIcon icon={faPlusSquare} /> Additional Info
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="6">
+                    <Card.Body>
+                      <Section7
                         handleChange={handleChange}
                         handleBlur={handleBlur}
                         values={values}

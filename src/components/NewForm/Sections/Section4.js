@@ -71,6 +71,17 @@ class Section4 extends Component {
               value={this.props.values.journalRepl}
               isInvalid={!!this.props.errors.journalRepl}
             />
+            <Form.Check
+              custom
+              inline
+              label="Drill Shaft/Vac. Die"
+              type={"checkbox"}
+              name="drillShaft"
+              id="drill-shaft"
+              onChange={this.props.handleChange}
+              value={this.props.values.drillShaft}
+              isInvalid={!!this.props.errors.drillShaft}
+            />
           </Form.Row>
           <br />
           <Form.Row>

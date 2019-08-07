@@ -21,7 +21,7 @@ class App extends Component {
                 <Route path="/print/:data" component={PrintPDF} exact />
               </Switch>
             </div>
-            <div className="footer">
+            <div className="Footer">
               <Image />
               <p className="text-center font-weight-light sm">
                 {"Created by "}

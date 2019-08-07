@@ -120,7 +120,7 @@ class Section3 extends Component {
           <InputGroup as={Col} className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-default">
-                Tot Eng Amt
+                Tot Eng Amt:
               </InputGroup.Text>
             </InputGroup.Prepend>
             <Form.Control
@@ -136,33 +136,70 @@ class Section3 extends Component {
           <InputGroup as={Col} className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-default">
-                Perf:
+                *Cut Type:
               </InputGroup.Text>
             </InputGroup.Prepend>
             <Form.Control
               as="select"
               aria-label="default"
-              name="perf"
+              name="cutType"
               onChange={this.props.handleChange}
-              value={this.props.values.perf}
-              isInvalid={!!this.props.errors.perf}
+              value={this.props.values.cutType}
             >
-              <option>No</option>
-              <option>Yes</option>
+              <option>To Liner</option>
+              <option>To Face</option>
+              <option>Multi M/M</option>
+              <option>Multi P/S</option>
+              <option>Special</option>
+              <option>M/M</option>
             </Form.Control>
           </InputGroup>
           <InputGroup as={Col} className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-default">
-                SI #:
+                Position:
+              </InputGroup.Text>
+            </InputGroup.Prepend>
+            <Form.Control
+              as="select"
+              aria-label="default"
+              name="position"
+              onChange={this.props.handleChange}
+              value={this.props.values.position}
+            >
+              <option>Topcutter</option>
+              <option>Undercutter</option>
+            </Form.Control>
+          </InputGroup>
+          <InputGroup as={Col} className="mb-3">
+            <InputGroup.Prepend>
+              <InputGroup.Text id="inputGroup-sizing-default">
+                Label Application:
+              </InputGroup.Text>
+            </InputGroup.Prepend>
+            <Form.Control
+              as="select"
+              aria-label="default"
+              name="labelAppl"
+              onChange={this.props.handleChange}
+              value={this.props.values.labelAppl}
+            >
+              <option>Manual</option>
+              <option>Automatic</option>
+            </Form.Control>
+          </InputGroup>
+          <InputGroup as={Col} className="mb-3">
+            <InputGroup.Prepend>
+              <InputGroup.Text id="inputGroup-sizing-default">
+                ME Log Number:
               </InputGroup.Text>
             </InputGroup.Prepend>
             <Form.Control
               aria-label="default"
-              name="siNumber"
+              name="meLogNumber"
               onChange={this.props.handleChange}
-              value={this.props.values.siNumber}
-              isInvalid={!!this.props.errors.siNumber}
+              value={this.props.values.meLogNumber}
+              isInvalid={!!this.props.errors.meLogNumber}
             />
           </InputGroup>
         </Form.Row>

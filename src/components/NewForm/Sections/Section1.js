@@ -7,6 +7,36 @@ class Section1 extends Component {
         <InputGroup className="mb-3">
           <InputGroup.Prepend>
             <InputGroup.Text id="inputGroup-sizing-default">
+              Quote Number:
+            </InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl
+            aria-label="Default"
+            aria-describedby="inputGroup-sizing-default"
+            name="quoteNumber"
+            onChange={this.props.handleChange}
+            value={this.props.values.quoteNumber}
+            isInvalid={!!this.props.errors.quoteNumber}
+          />
+        </InputGroup>
+        <InputGroup className="mb-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text id="inputGroup-sizing-default">
+              Received By:
+            </InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl
+            aria-label="Default"
+            aria-describedby="inputGroup-sizing-default"
+            name="receivedBy"
+            onChange={this.props.handleChange}
+            value={this.props.values.receivedBy}
+            isInvalid={!!this.props.errors.receivedBy}
+          />
+        </InputGroup>
+        <InputGroup className="mb-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text id="inputGroup-sizing-default">
               Inspected By:
             </InputGroup.Text>
           </InputGroup.Prepend>
@@ -19,38 +49,6 @@ class Section1 extends Component {
             isInvalid={!!this.props.errors.inspectedBy}
           />
         </InputGroup>
-        <Form.Row>
-          <InputGroup as={Col} className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroup-sizing-default">
-                Quote #
-              </InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
-              name="quoteNumber"
-              onChange={this.props.handleChange}
-              value={this.props.values.quoteNumber}
-              isInvalid={!!this.props.errors.quoteNumber}
-            />
-          </InputGroup>
-          <InputGroup as={Col} className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text>Date Received</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              type="text"
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
-              name="dateReceived"
-              onChange={this.props.handleChange}
-              value={this.props.values.dateReceived}
-              isInvalid={!!this.props.errors.dateReceived}
-            />
-          </InputGroup>
-        </Form.Row>
-
         <InputGroup className="mb-3">
           <InputGroup.Prepend>
             <InputGroup.Text>Customer Name</InputGroup.Text>
@@ -60,6 +58,36 @@ class Section1 extends Component {
             onChange={this.props.handleChange}
             value={this.props.values.customerName}
             isInvalid={!!this.props.errors.customerName}
+          />
+        </InputGroup>
+        <InputGroup className="mb-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text>Date Received</InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl
+            type="text"
+            aria-label="Default"
+            aria-describedby="inputGroup-sizing-default"
+            name="dateReceived"
+            onChange={this.props.handleChange}
+            value={this.props.values.dateReceived}
+            isInvalid={!!this.props.errors.dateReceived}
+          />
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text id="inputGroup-sizing-default">
+              Die Manufactured By:
+            </InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl
+            aria-label="Default"
+            aria-describedby="inputGroup-sizing-default"
+            name="manufacturedBy"
+            onChange={this.props.handleChange}
+            value={this.props.values.manufacturedBy}
+            isInvalid={!!this.props.errors.manufacturedBy}
           />
         </InputGroup>
         <Form.Row>
@@ -87,16 +115,57 @@ class Section1 extends Component {
           </InputGroup>
         </Form.Row>
         <Form.Row>
-          <Form.Check
-            custom
-            name="complaint"
-            label="Was there a complaint?"
-            type={"checkbox"}
-            onChange={this.props.handleChange}
-            value={this.props.values.complaint}
-            id={"sec1-complaint"}
-          />
+          <InputGroup as={Col} className="mb-3">
+            <InputGroup.Text>Ship Date</InputGroup.Text>
+            <FormControl
+              name="shipDate"
+              onChange={this.props.handleChange}
+              value={this.props.values.shipDate}
+              isInvalid={!!this.props.errors.shipDate}
+            />
+          </InputGroup>
+          <InputGroup as={Col} className="mb-3">
+            <InputGroup.Prepend>
+              <InputGroup.Text>Ship Method</InputGroup.Text>
+            </InputGroup.Prepend>
+            <FormControl
+              name="shipMethod"
+              onChange={this.props.handleChange}
+              value={this.props.values.shipMethod}
+              isInvalid={!!this.props.errors.shipMethod}
+            />
+          </InputGroup>
         </Form.Row>
+        <Form.Row>
+          <InputGroup as={Col} className="mb-3">
+            <InputGroup.Prepend>
+              <InputGroup.Text id="inputGroup-sizing-default">
+                Demand Class:
+              </InputGroup.Text>
+            </InputGroup.Prepend>
+            <Form.Control
+              as="select"
+              aria-label="default"
+              name="demandClass"
+              onChange={this.props.handleChange}
+              value={this.props.values.demandClass}
+            >
+              <option>Standard</option>
+              <option>Priority</option>
+              <option>Red Tag</option>
+            </Form.Control>
+          </InputGroup>
+        </Form.Row>
+
+        <Form.Check
+          custom
+          name="complaint"
+          label="Was there a complaint?"
+          type={"checkbox"}
+          onChange={this.props.handleChange}
+          value={this.props.values.complaint}
+          id={"sec1-complaint"}
+        />
       </div>
     );
   }

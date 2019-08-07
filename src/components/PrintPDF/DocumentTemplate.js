@@ -22,17 +22,22 @@ export class DocumentTemplate {
     quoteString: "",
     qrCodeData: "",
     inspectedBy: "",
+    receivedBy: "",
+    manufacturedBy: "",
     quoteNumber: "",
     dateReceived: "",
     complaint: false,
     customerName: "",
     po: "",
     prevRepairOrder: "",
+    demandClass: "",
+    shipDate: "",
+    shipMethod: "",
     /**
      * Section 2
      * Die Characteristics
      */
-    demandClass: "",
+
     dieType: "",
     serialNumber: "",
     customSpecialMark: "",
@@ -45,15 +50,15 @@ export class DocumentTemplate {
     face: "",
     gearBore: "",
     gearDWG: "",
-    hubDiameter: "",
-    insideBearerLength: "",
-    overallWidth: "",
+    gearSide: "",
+    gearCondition: "",
     weight: "",
-    overallLength: "",
     bodyLength: "",
     bearerWidth: "",
     originalJob: "",
     pd: "",
+    rollDWG: "",
+    noGearReceived: false,
 
     /**
      * Section 3
@@ -67,8 +72,10 @@ export class DocumentTemplate {
     sizeAround: "",
     engCav: "",
     totEngAmt: 0,
-    perf: "",
-    siNumber: "",
+    cutType: "",
+    position: "",
+    labelAppl: "",
+    meLogNumber: "",
 
     /**
      * Section 4
@@ -85,11 +92,41 @@ export class DocumentTemplate {
     chipped: false,
     abbrasiveWear: false,
     overallBladeImpact: false,
+    drillShaft: false,
 
     /**
      * Section 5
      * Repair Type #2
      */
+    matlLayer1: "",
+    matlLayer2: "",
+    matlLayer3: "",
+    matlLayer4: "",
+    matlLayer5: "",
+    matlLayer6: "",
+    stockSource: "",
+    siNumber: "",
+    treatment: "",
+    noOfPerfSetsToAdd: 0,
+    smallestNo: 0,
+    clearance1: "",
+    clearance2: "",
+    clearance3: "",
+    clearance4: "",
+    impression: "",
+    wheelMaterial: "",
+    qtyScoreBlade: "",
+    qtyPunchWheels: "",
+
+    /**
+     * Section 6
+     * Repair Type #3
+     */
+    punchesInTool: "",
+    punchesLoose: "",
+    numberOfCases: 0,
+    inpsectionClearance1: "",
+    inpsectionClearance2: "",
     gsBearerDia: "",
     nonGSBearerDia: "",
     customSamples: "",
@@ -98,15 +135,32 @@ export class DocumentTemplate {
     siliconeCavities: false,
     patternChange: false,
     foamCavities: false,
+    tightTol: false,
     nonStick: false,
     qcSheet: false,
+    boxType: "",
+    miscBox: "",
+    crateRecdIn: "",
+    crateNumber: "",
+    vacuumToolInfo: "",
+    weldCost: "",
+    finishingCost: "",
+    subTotalCost: "",
+    multiLevelCost: "",
+    nscCost: "",
+    chromeCost: "",
+    cornersCost: "",
+    otherCost: "",
+    totalCost: "",
 
     /**
      * Section 6
      * Additional Info
      */
     sparePartsToBeReturned: "",
-    remarks: ""
+    remarks: "",
+    miscProductDescription: "",
+    tax: ""
   };
 
   constructor(props) {
@@ -126,9 +180,7 @@ export class DocumentTemplate {
           <Region
             style={{
               flexDirection: "column",
-              height: "60pt",
-              borderBottom: "black",
-              borderBottomWidth: "1pt"
+              height: "70pt"
             }}
             debug={false}
             id={"region1"}
@@ -136,48 +188,95 @@ export class DocumentTemplate {
             <View style={{ flexDirection: "row", height: "35pt" }}>
               <Image
                 src={require("../../assets/rotometrics-logo.png")}
-                style={{ width: 198, height: 46 }}
+                style={{ width: 147, height: 35 }}
               />
-              <Text style={styles.title}>REPAIR EVALUATION FORM</Text>
+              <View style={{ flexDirection: "column" }}>
+                <Text style={styles.title}>REPAIR EVALUATION FORM</Text>
+                <FieldContainer style={{ marginLeft: "35vw" }}>
+                  <StrongText>Quote: </StrongText>
+                  <Text style={styles.text}>{this.props.quoteNumber}</Text>
+                </FieldContainer>
+              </View>
             </View>
-            <View
-              style={{
-                flexDirection: "row",
-                marginLeft: "25vw",
-                marginRight: "5vw"
-              }}
-            >
+            <View style={{ flexDirection: "row", marginTop: "8pt" }}>
+              <View
+                style={{
+                  flex: "1",
+                  flexDirection: "row",
+                  border: "black",
+                  borderWidth: "2pt",
+                  paddingLeft: "4pt"
+                }}
+              >
+                <StrongText
+                  style={{ fontFamily: "Helvetica-Bold", fontSize: "16pt" }}
+                >
+                  PURPOSE:{" "}
+                </StrongText>
+                <Text style={{ fontSize: "16pt" }}>
+                  Order Entry/Receiving/Idle Inspection
+                </Text>
+              </View>
+              <View
+                style={{
+                  flex: "1",
+                  flexDirection: "row",
+                  border: "black",
+                  borderWidth: "2pt",
+                  borderLeftWidth: "0pt",
+                  paddingLeft: "4pt"
+                }}
+              >
+                <StrongText
+                  style={{ fontFamily: "Helvetica-Bold", fontSize: "16pt" }}
+                >
+                  SCOPE:{" "}
+                </StrongText>
+                <Text style={{ fontSize: "16pt" }}>
+                  This site is specific to MIS
+                </Text>
+              </View>
+            </View>
+          </Region>
+          <Region
+            style={{
+              flexDirection: "column",
+              height: "100pt",
+              borderBottom: "black",
+              borderBottomWidth: "2pt"
+            }}
+            debug={false}
+            id={"region2"}
+          >
+            <Row>
+              <FieldContainer>
+                <StrongText>Received By: </StrongText>
+                <Text style={styles.text}>{this.props.receivedBy}</Text>
+              </FieldContainer>
               <FieldContainer>
                 <StrongText>Inspected By: </StrongText>
                 <Text style={styles.text}>{this.props.inspectedBy}</Text>
               </FieldContainer>
               <FieldContainer>
-                <StrongText>Quote No.: </StrongText>
-                <Text style={styles.text}>{this.props.quoteNumber}</Text>
+                <StrongText>Manufactured By: </StrongText>
+                <Text style={styles.text}>{this.props.manufacturedBy}</Text>
               </FieldContainer>
               <FieldContainer>
                 <StrongText>Date Received: </StrongText>
                 <Text style={styles.text}>{this.props.dateReceived}</Text>
               </FieldContainer>
-
               <FieldContainer>
                 <StrongText>Complaint: </StrongText>
                 <Text style={styles.text}>
                   {this.props.complaint ? "YES" : "NO"}
                 </Text>
               </FieldContainer>
-            </View>
-          </Region>
-          <Region
-            style={{
-              height: "140pt",
-              borderBottom: "black",
-              borderBottomWidth: "1pt"
-            }}
-            debug={false}
-            id={"region2"}
-          >
+            </Row>
             <Row>
+              <FieldContainer>
+                <StrongText>Prev. Repair Order: </StrongText>
+                <Text style={styles.text}>{this.props.prevRepairOrder}</Text>
+              </FieldContainer>
               <FieldContainer>
                 <StrongText>Customer: </StrongText>
                 <Text style={styles.text}>{this.props.customerName}</Text>
@@ -186,10 +285,7 @@ export class DocumentTemplate {
                 <StrongText>P.O.: </StrongText>
                 <Text style={styles.text}>{this.props.po}</Text>
               </FieldContainer>
-              <FieldContainer>
-                <StrongText>Prev. Repair Order: </StrongText>
-                <Text style={styles.text}>{this.props.prevRepairOrder}</Text>
-              </FieldContainer>
+
               <FieldContainer>
                 <StrongText>Demand Class:</StrongText>
                 <Text style={styles.text}>{this.props.demandClass}</Text>
@@ -209,101 +305,107 @@ export class DocumentTemplate {
                 <Text style={styles.text}>{this.props.customSpecialMark}</Text>
               </FieldContainer>
               <FieldContainer>
-                <StrongText>*Gear Bore:</StrongText>
-                <Text style={styles.text}>{this.props.gearBore}</Text>
+                <StrongText>Ship Date:</StrongText>
+                <Text style={styles.text}>{this.props.shipDate}</Text>
+              </FieldContainer>
+              <FieldContainer>
+                <StrongText>Ship Method:</StrongText>
+                <Text style={styles.text}>{this.props.shipMethod}</Text>
               </FieldContainer>
             </Row>
             <Row>
-              <FieldContainer>
-                <StrongText>PPA:</StrongText>
+              <FieldContainer debug={false}>
+                <StrongText style={{ alignSelf: "center", marginRight: "6pt" }}>
+                  PPA:
+                </StrongText>
                 <View
                   style={{
-                    padding: "1",
+                    paddingLeft: "5",
+                    paddingRight: "5",
                     alignItems: "center",
                     border: "black",
-                    borderWidth: "2pt"
+                    borderWidth: "1pt"
                   }}
                 >
                   <Text style={styles.text}>{this.props.ppa1}</Text>
                 </View>
                 <View
                   style={{
-                    padding: "1",
+                    paddingLeft: "5",
+                    paddingRight: "5",
                     alignItems: "center",
                     border: "black",
-                    borderWidth: "2pt"
+                    borderWidth: "1pt",
+                    borderLeftWidth: "0pt"
                   }}
                 >
                   <Text style={styles.text}>{this.props.ppa2}</Text>
                 </View>
                 <View
                   style={{
-                    padding: "1",
+                    paddingLeft: "5",
+                    paddingRight: "5",
                     alignItems: "center",
                     border: "black",
-                    borderWidth: "2pt"
+                    borderWidth: "1pt",
+                    borderLeftWidth: "0pt"
                   }}
                 >
                   <Text style={styles.text}>
-                    {this.props.ppa3 ? this.props.ppa3 : "        "}
+                    {this.props.ppa3 ? this.props.ppa3 : "           "}
                   </Text>
                 </View>
               </FieldContainer>
               <FieldContainer>
-                <StrongText>Replace Gear:</StrongText>
+                <StrongText>*# of Teeth:</StrongText>
+                <Text style={styles.text}>{this.props.numberOfTeeth}</Text>
+              </FieldContainer>
+              <FieldContainer>
+                <StrongText>Replacement Gears:</StrongText>
                 <Text style={styles.text}>{this.props.replaceGear}</Text>
               </FieldContainer>
-              <FieldContainer>
-                <StrongText>*Hub Dia:</StrongText>
-                <Text style={styles.text}>{this.props.hubDiameter}</Text>
-              </FieldContainer>
-              <FieldContainer>
-                <StrongText>*Face:</StrongText>
-                <Text style={styles.text}>{this.props.face}</Text>
-              </FieldContainer>
-              <FieldContainer>
-                <StrongText>*Gear DWG (if known):</StrongText>
-                <Text style={styles.text}>{this.props.gearDWG}</Text>
-              </FieldContainer>
-            </Row>
-            <Row>
               <FieldContainer>
                 <StrongText>Qty Gears to be returned:</StrongText>
                 <Text style={styles.text}>{this.props.gearsReturned}</Text>
               </FieldContainer>
               <FieldContainer>
-                <StrongText> *Overall width:</StrongText>
-                <Text style={styles.text}>{this.props.overallWidth}</Text>
+                <StrongText>Gear Bore:</StrongText>
+                <Text style={styles.text}>{this.props.gearBore}</Text>
               </FieldContainer>
               <FieldContainer>
-                <StrongText> Inside Bearer Length:</StrongText>
-                <Text style={styles.text}>{this.props.insideBearerLength}</Text>
+                <StrongText>Gear DWG (if known):</StrongText>
+                <Text style={styles.text}>{this.props.gearDWG}</Text>
               </FieldContainer>
+            </Row>
+            <Row>
               <FieldContainer>
                 <StrongText>Bearer Width:</StrongText>
                 <Text style={styles.text}>{this.props.width}</Text>
               </FieldContainer>
-            </Row>
-            <Row>
               <FieldContainer>
                 <StrongText>Original Job/Order #.:</StrongText>
                 <Text style={styles.text}>{this.props.originalJob}</Text>
               </FieldContainer>
               <FieldContainer>
-                <StrongText>*P.D.:</StrongText>
-                <Text style={styles.text}>{this.props.pd}</Text>
+                <StrongText>Roll DWG:</StrongText>
+                <Text style={styles.text}>{this.props.overallWidth}</Text>
               </FieldContainer>
               <FieldContainer>
-                <StrongText>*Weight:</StrongText>
+                <StrongText>P.D.:</StrongText>
+                <Text style={styles.text}>{this.props.pd}</Text>
+              </FieldContainer>
+
+              <FieldContainer>
+                <StrongText>Weight:</StrongText>
                 <Text style={styles.text}>{this.props.weight}</Text>
               </FieldContainer>
               <FieldContainer>
-                <StrongText>*Body Length:</StrongText>
+                <StrongText>Body Length:</StrongText>
                 <Text style={styles.text}>{this.props.bodyLength}</Text>
               </FieldContainer>
               <FieldContainer>
-                <StrongText>*Overall Length:</StrongText>
-                <Text style={styles.text}>{this.props.overallLength}</Text>
+                <StrongText>Condition of Gears:</StrongText>
+                <Text style={styles.text}>{this.props.gearCondition}</Text>
               </FieldContainer>
             </Row>
           </Region>
@@ -311,16 +413,20 @@ export class DocumentTemplate {
             <View
               style={[
                 styles.section,
-                { flexDirection: "column", width: "70%" }
+                {
+                  flexDirection: "column",
+                  width: "70%",
+                  border: "black",
+                  borderRightWidth: "2pt"
+                }
               ]}
             >
               <Region
                 style={{
-                  height: "54pt",
-                  borderBottom: "black",
-                  borderRight: "black",
-                  borderBottomWidth: "1pt",
-                  borderRightWidth: "1pt"
+                  flexDirection: "row",
+                  height: "25pt",
+                  border: "black",
+                  borderBottomWidth: "2pt"
                 }}
                 debug={false}
                 id={"region3"}
@@ -334,7 +440,7 @@ export class DocumentTemplate {
                   <Text style={styles.text}>
                     {this.props.specialCavityType !== "n/a"
                       ? this.props.specialCavityType
-                      : ""}
+                      : "n/a"}
                   </Text>
                 </FieldContainer>
               </Region>
@@ -343,14 +449,14 @@ export class DocumentTemplate {
                 id={"region4"}
                 style={{
                   borderBottom: "black",
-                  borderRight: "black",
-                  borderBottomWidth: "1pt",
-                  borderRightWidth: "1pt"
+                  borderBottomWidth: "2pt"
                 }}
               >
-                <StrongText style={{ marginLeft: "20pt", fontSize: "11pt" }}>
-                  Check all that apply:{"\n\n"}
-                </StrongText>
+                <Row style={{ marginBottom: "4pt" }}>
+                  <StrongText style={{ marginLeft: "10pt", fontSize: "11pt" }}>
+                    Check all that apply:{"\n"}
+                  </StrongText>
+                </Row>
                 <Row>
                   <FieldContainer>
                     <StrongText>Normal Wear </StrongText>
@@ -368,6 +474,12 @@ export class DocumentTemplate {
                     <StrongText>Journal Rev </StrongText>
                     <Text style={styles.text}>
                       {this.props.journalRev ? "YES" : "NO"}
+                    </Text>
+                  </FieldContainer>
+                  <FieldContainer>
+                    <StrongText>Drill Shaft/Vac Die </StrongText>
+                    <Text style={styles.text}>
+                      {this.props.drillShaft ? "YES" : "NO"}
                     </Text>
                   </FieldContainer>
                 </Row>
@@ -424,13 +536,106 @@ export class DocumentTemplate {
                 </Row>
               </Region>
               <Region
+                style={{
+                  borderBottom: "black",
+                  borderBottomWidth: "2pt"
+                }}
+              >
+                <Row>
+                  <FieldContainer>
+                    <StrongText>Matl Layer 1:</StrongText>
+                    <Text style={styles.text}>{this.props.matlLayer1}</Text>
+                  </FieldContainer>
+                  <FieldContainer>
+                    <StrongText>Stock Source:</StrongText>
+                    <Text style={styles.text}>{this.props.stockSource}</Text>
+                  </FieldContainer>
+                  <FieldContainer>
+                    <StrongText>SI #:</StrongText>
+                    <Text style={styles.text}>{this.props.siNumber}</Text>
+                  </FieldContainer>
+                </Row>
+                <Row>
+                  <FieldContainer>
+                    <StrongText>Matl Layer 2:</StrongText>
+                    <Text style={styles.text}>{this.props.matlLayer2}</Text>
+                  </FieldContainer>
+                  <FieldContainer>
+                    <StrongText>Treatment:</StrongText>
+                    <Text style={styles.text}>{this.props.treatment}</Text>
+                  </FieldContainer>
+                  <FieldContainer>
+                    <StrongText>Impression:</StrongText>
+                    <Text style={styles.text}>{this.props.impression}</Text>
+                  </FieldContainer>
+                </Row>
+                <Row>
+                  <FieldContainer>
+                    <StrongText>Matl Layer 3:</StrongText>
+                    <Text style={styles.text}>{this.props.matlLayer3}</Text>
+                  </FieldContainer>
+                  <FieldContainer>
+                    <StrongText>Perf Sets To Add:</StrongText>
+                    <Text style={styles.text}>
+                      {this.props.noOfPerfSetsToAdd}
+                    </Text>
+                  </FieldContainer>
+                  <FieldContainer>
+                    <StrongText>Smallest No.:</StrongText>
+                    <Text style={styles.text}>{this.props.smallestNo}</Text>
+                  </FieldContainer>
+                </Row>
+                <Row>
+                  <FieldContainer>
+                    <StrongText>Matl Layer 4:</StrongText>
+                    <Text style={styles.text}>{this.props.matlLayer4}</Text>
+                  </FieldContainer>
+                </Row>
+                <Row>
+                  <FieldContainer>
+                    <StrongText>Matl Layer 5:</StrongText>
+                    <Text style={styles.text}>{this.props.matlLayer5}</Text>
+                  </FieldContainer>
+                  <FieldContainer>
+                    <StrongText>*Clearance 1:</StrongText>
+                    <Text style={styles.text}>{this.props.clearance1}</Text>
+                  </FieldContainer>
+                  <FieldContainer>
+                    <StrongText>*Clearance 2:</StrongText>
+                    <Text style={styles.text}>{this.props.clearance2}</Text>
+                  </FieldContainer>
+                </Row>
+                <Row>
+                  <FieldContainer>
+                    <StrongText>Matl Layer 6:</StrongText>
+                    <Text style={styles.text}>{this.props.matlLayer6}</Text>
+                  </FieldContainer>
+                  <FieldContainer>
+                    <StrongText>*Clearance 3:</StrongText>
+                    <Text style={styles.text}>{this.props.clearance3}</Text>
+                  </FieldContainer>
+                  <FieldContainer>
+                    <StrongText>*Clearance 4:</StrongText>
+                    <Text style={styles.text}>{this.props.clearance4}</Text>
+                  </FieldContainer>
+                </Row>
+              </Region>
+              <Region
                 debug={false}
                 id={"region6"}
                 style={{
-                  borderRight: "black",
-                  borderRightWidth: "1pt"
+                  borderBottom: "black",
+                  borderBottomWidth: "2pt"
                 }}
               >
+                <Row>
+                  <FieldContainer s>
+                    <StrongText>Return Spare Parts:</StrongText>
+                    <Text style={styles.text}>
+                      {this.props.sparePartsToBeReturned}
+                    </Text>
+                  </FieldContainer>
+                </Row>
                 <Row>
                   <FieldContainer>
                     <StrongText>Silicone Cavities</StrongText>
@@ -442,6 +647,10 @@ export class DocumentTemplate {
                     <StrongText>GS Bearer Dia:</StrongText>
                     <Text style={styles.text}>{this.props.gsBearerDia}</Text>
                   </FieldContainer>
+                  <FieldContainer>
+                    <StrongText>Non-GS Bearer Dia:</StrongText>
+                    <Text style={styles.text}>{this.props.nonGSBearerDia}</Text>
+                  </FieldContainer>
                 </Row>
                 <Row>
                   <FieldContainer>
@@ -451,8 +660,8 @@ export class DocumentTemplate {
                     </Text>
                   </FieldContainer>
                   <FieldContainer>
-                    <StrongText>Non-GS Bearer Dia:</StrongText>
-                    <Text style={styles.text}>{this.props.nonGSBearerDia}</Text>
+                    <StrongText>Grind Estimate:</StrongText>
+                    <Text style={styles.text}>{this.props.grindEstimate}</Text>
                   </FieldContainer>
                 </Row>
                 <Row>
@@ -462,10 +671,6 @@ export class DocumentTemplate {
                       {this.props.foamCavities ? "YES" : "NO"}
                     </Text>
                   </FieldContainer>
-                  <FieldContainer>
-                    <StrongText>Grind Estimate:</StrongText>
-                    <Text style={styles.text}>{this.props.grindEstimate}</Text>
-                  </FieldContainer>
                 </Row>
                 <Row>
                   <FieldContainer>
@@ -474,10 +679,17 @@ export class DocumentTemplate {
                       {this.props.nonStick ? "YES" : "NO"}
                     </Text>
                   </FieldContainer>
+
                   <FieldContainer>
                     <StrongText>Custom Samples:</StrongText>
                     <Text style={styles.text}>
                       {this.props.customSamples ? "YES" : "NO"}
+                    </Text>
+                  </FieldContainer>
+                  <FieldContainer>
+                    <StrongText># of Corners:</StrongText>
+                    <Text style={styles.text}>
+                      {this.props.numberOfCorners}
                     </Text>
                   </FieldContainer>
                 </Row>
@@ -489,9 +701,23 @@ export class DocumentTemplate {
                     </Text>
                   </FieldContainer>
                   <FieldContainer>
-                    <StrongText># of Corners:</StrongText>
+                    <StrongText>Inspection Clearance #1:</StrongText>
                     <Text style={styles.text}>
-                      {this.props.numberOfCorners}
+                      {this.props.inpsectionClearance1}
+                    </Text>
+                  </FieldContainer>
+                </Row>
+                <Row>
+                  <FieldContainer>
+                    <StrongText>Thight Tol </StrongText>
+                    <Text style={styles.text}>
+                      {this.props.tightTol ? "YES" : "NO"}
+                    </Text>
+                  </FieldContainer>
+                  <FieldContainer>
+                    <StrongText>Inspection Clearance #2:</StrongText>
+                    <Text style={styles.text}>
+                      {this.props.inpsectionClearance2}
                     </Text>
                   </FieldContainer>
                 </Row>
@@ -500,25 +726,54 @@ export class DocumentTemplate {
                 debug={false}
                 id={"region7"}
                 style={{
-                  borderRight: "black",
-                  borderRightWidth: "1pt",
-                  borderTop: "black",
-                  borderTopWidth: "1pt",
+                  height: "24pt",
+                  flexDirection: "row",
+                  borderBottom: "black",
+                  borderBottomWidth: "2pt"
+                }}
+              >
+                <FieldContainer>
+                  <StrongText>Wheel Material:</StrongText>
+                  <Text style={styles.text}>{this.props.wheelMaterial}</Text>
+                </FieldContainer>
+                <FieldContainer>
+                  <StrongText>Qty Score Blade:</StrongText>
+                  <Text style={styles.text}>{this.props.qtyScoreBlade}</Text>
+                </FieldContainer>
+                <FieldContainer>
+                  <StrongText>Qty Punch Wheels:</StrongText>
+                  <Text style={styles.text}>{this.props.qtyPunchWheels}</Text>
+                </FieldContainer>
+              </Region>
+              <Region
+                debug={false}
+                id={"region7"}
+                style={{
+                  height: "46pt",
+                  borderBottom: "black",
+                  borderBottomWidth: "2pt",
                   textAlign: "justify"
                 }}
                 wrap={false}
               >
+                <Row>
+                  <FieldContainer>
+                    <StrongText>Tax: </StrongText>
+                    <Text style={styles.text}>
+                      {this.props.tax ? "YES" : "NO"}
+                    </Text>
+                  </FieldContainer>
+                  <FieldContainer>
+                    <StrongText>Remarks: </StrongText>
+                    <Text style={styles.text}>{this.props.remarks}</Text>
+                  </FieldContainer>
+                </Row>
+              </Region>
+              <Region>
                 <FieldContainer>
-                  <StrongText>Spare Parts to be Returned:</StrongText>
-                  <Text style={styles.text}>
-                    {this.props.sparePartsToBeReturned}
+                  <Text style={[styles.text, { marginRight: "36pt" }]}>
+                    FCD-00229
                   </Text>
-                </FieldContainer>
-                <FieldContainer>
-                  <StrongText>Remarks: </StrongText>
-                  <Text style={styles.text}>{this.props.remarks}</Text>
-                </FieldContainer>
-                <FieldContainer style={{ marginTop: "15" }}>
                   <StrongText>
                     * These fields are only required for NRP's
                   </StrongText>
@@ -564,22 +819,22 @@ export class DocumentTemplate {
                 </Row>
                 <Row>
                   <FieldContainer>
-                    <StrongText>Perf:</StrongText>
-                    <Text style={styles.text}>{this.props.perf}</Text>
+                    <StrongText>*Cut type:</StrongText>
+                    <Text style={styles.text}>{this.props.cutType}</Text>
+                  </FieldContainer>
+                  <FieldContainer style={{ marginLeft: "96pt" }}>
+                    <StrongText>Position:</StrongText>
+                    <Text style={styles.text}>{this.props.position}</Text>
                   </FieldContainer>
                 </Row>
                 <Row>
                   <FieldContainer>
-                    <StrongText>Stock Source:</StrongText>
-                    <Text style={styles.text}>
-                      {!this.props.stockSource
-                        ? "Rec'd with order"
-                        : this.props.stockSource}
-                    </Text>
+                    <StrongText>Label Application:</StrongText>
+                    <Text style={styles.text}>{this.props.labelAppl}</Text>
                   </FieldContainer>
-                  <FieldContainer>
-                    <StrongText>SI #:</StrongText>
-                    <Text style={styles.text}>{this.props.siNumber}</Text>
+                  <FieldContainer style={{ marginLeft: "72pt" }}>
+                    <StrongText>ME Log Number:</StrongText>
+                    <Text style={styles.text}>{this.props.meLogNumber}</Text>
                   </FieldContainer>
                 </Row>
               </Region>
@@ -632,12 +887,12 @@ export const styles = StyleSheet.create({
   },
   lightText: {
     fontFamily: "Courier-Oblique",
-    fontSize: "7pt",
+    fontSize: "5pt",
     marginLeft: "4pt",
     marginRight: "4pt"
   },
   title: {
-    fontSize: "24pt",
+    fontSize: "22pt",
     fontFamily: "Helvetica-Bold",
     marginLeft: "35vw"
   }
@@ -645,14 +900,14 @@ export const styles = StyleSheet.create({
 
 //Styled Components
 const FieldContainer = styled.View`
-  margin-top: 4pt;
-  margin-bottom: 8pt;
+  margin-top: 3pt;
+  margin-bottom: 3pt;
   flex-direction: row;
   margin-right: 5pt;
   margin-left: 15pt;
 `;
 const Region = styled.View`
-  padding: 8pt;
+  padding: 2pt;
 `;
 const Row = styled.View`
   margin: 0;
