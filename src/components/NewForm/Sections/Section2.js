@@ -67,7 +67,7 @@ class Section2 extends Component {
                   {...field}
                   placeholder="# of teeth*"
                   onChange={e => {
-                    const pd = parseInt(e.target.value) / (8 * 3.1415926);
+                    const pd = parseInt(e.target.value) / (8 * 3.14159261);
                     this.props.handleChange(e);
                     form.setFieldValue("pd", `${pd.toFixed(4)}"`);
                   }}
