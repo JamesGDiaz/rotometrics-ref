@@ -17,6 +17,7 @@ const DragZone = props => {
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/jpg, image/png, image/jpeg",
     multiple: false,
+    maxSize: 524288,
     onDrop: acceptedFiles => {
       setErrors(null);
       setFiles(
@@ -86,7 +87,10 @@ const DragZone = props => {
         <section className="DragContainer">
           <div {...getRootProps({ className: "DropZone" })}>
             <input {...getInputProps()} />
-            <p>Drag n drop the QR code here, or click to select an image</p>
+            <p>
+              Drag n drop the QR code here, or click to select an image (max.
+              size 512kB)
+            </p>
           </div>
           <aside className={"thumbsContainer"}>{thumbs}</aside>
         </section>
