@@ -96,12 +96,12 @@ const newFormSchema = Yup.object().shape({
    * Section 5
    * Repair Type #2
    */
-  matlLayer1: Yup.string().max(11, "too long"),
-  matlLayer2: Yup.string().max(11, "too long"),
-  matlLayer3: Yup.string().max(11, "too long"),
-  matlLayer4: Yup.string().max(11, "too long"),
-  matlLayer5: Yup.string().max(11, "too long"),
-  matlLayer6: Yup.string().max(11, "too long"),
+  matlLayer1: Yup.string().max(27, "too long"),
+  matlLayer2: Yup.string().max(27, "too long"),
+  matlLayer3: Yup.string().max(27, "too long"),
+  matlLayer4: Yup.string().max(27, "too long"),
+  matlLayer5: Yup.string().max(27, "too long"),
+  matlLayer6: Yup.string().max(27, "too long"),
   stockSource: Yup.string().max(20, "too long"),
   siNumber: Yup.string().max(15, "too long"),
   treatment: Yup.string().max(15, "too long"),

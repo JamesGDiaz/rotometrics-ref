@@ -56,6 +56,9 @@ class Header extends Component {
                   <LinkContainer to="/new">
                     <Nav.Link>New File</Nav.Link>
                   </LinkContainer>
+                  <LinkContainer to="/load">
+                    <Nav.Link>Load File</Nav.Link>
+                  </LinkContainer>
                 </Nav>
               }
             </Navbar.Collapse>

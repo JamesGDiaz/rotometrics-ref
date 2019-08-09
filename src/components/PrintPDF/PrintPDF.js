@@ -5,9 +5,9 @@ import Spinner from "react-bootstrap/Spinner";
 import { faFileDownload } from "@fortawesome/free-solid-svg-icons";
 import { PDFViewer, PDFDownloadLink } from "@react-pdf/renderer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//import QRCode from "qrcode.react";
 import QRCode from "qrcode";
 import { DocumentTemplate } from "./DocumentTemplate";
+import ErrorAlert from "../ErrorAlert/ErrorAlert";
 
 class PrintPDF extends Component {
   constructor(props) {
@@ -15,7 +15,8 @@ class PrintPDF extends Component {
     this.state = {
       loading: true,
       dirtyFormString: this.props.match.params.data,
-      formObject: null
+      formObject: null,
+      error: ""
     };
   }
 
@@ -36,7 +37,6 @@ class PrintPDF extends Component {
         });
       }
     );
-
     console.debug(this.state.formObject);
   };
 
@@ -49,6 +49,11 @@ class PrintPDF extends Component {
       .replace(/(-^[\n])/g, "");
     zlib.gunzip(Buffer.from(formString, "base64"), (error, result) => {
       if (error) {
+        this.setState({
+          loading: false,
+          error:
+            "There was an error generating this quote. Is the decoded data correct?"
+        });
         console.error(error);
         return;
       }
@@ -68,7 +73,13 @@ class PrintPDF extends Component {
           />
         </div>
       );
-    else {
+    else if (this.state.error) {
+      return (
+        <div style={{ flex: 0.5, padding: "3vmin" }}>
+          <ErrorAlert text={this.state.error} />
+        </div>
+      );
+    } else {
       let MyDocument = new DocumentTemplate(this.state.formObject);
       MyDocument.qrCodeData = this.state.qrCodeURL;
 
@@ -97,9 +108,11 @@ class PrintPDF extends Component {
             display: "flex",
             flex: 1,
             flexDirection: "column",
-            padding: "5px"
+            padding: "5px",
+            marginTop: "5vh"
           }}
         >
+          {this.state.error ? <ErrorAlert text={this.state.error} /> : null}
           <DownloadLink />
           <PDFViewer
             style={{

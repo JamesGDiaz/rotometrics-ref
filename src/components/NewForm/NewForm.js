@@ -9,7 +9,8 @@ import {
   faCircleNotch,
   faTools,
   faPlusSquare,
-  faDotCircle
+  faDotCircle,
+  faScroll
 } from "@fortawesome/free-solid-svg-icons";
 import Section1 from "./Sections/Section1";
 import Section2 from "./Sections/Section2";
@@ -21,18 +22,22 @@ import Section7 from "./Sections/Section7";
 import { Formik } from "formik";
 import newFormSchema from "./NewFormSchema";
 import "./NewForm.css";
+import ErrorAlert from "../ErrorAlert/ErrorAlert";
 
 class NewForm extends Component {
   listErrors = errors => {
     if (Object.getOwnPropertyNames(errors).length > 0) {
       return Object.getOwnPropertyNames(errors).map((value, index) => {
         return (
-          <div className={"Error"} key={index}>
-            {value.replace(/([A-Z])/g, " $1").replace(/^./, function(str) {
-              return str.toUpperCase();
-            })}
-            , {errors[value]}
-          </div>
+          <ErrorAlert
+            text={`${value
+              .replace(/([A-Z])/g, " $1")
+              .replace(/^./, function(str) {
+                return str.toUpperCase();
+              })}
+          , ${errors[value]}`}
+            key={index}
+          />
         );
       });
     }
@@ -102,7 +107,7 @@ class NewForm extends Component {
               >
                 {!isSubmitting ? (
                   <div>
-                    Create File <FontAwesomeIcon icon={faHandPointRight} />
+                    Create File <FontAwesomeIcon icon={faHandPointRight} />{" "}
                     <FontAwesomeIcon icon={faFilePdf} />
                   </div>
                 ) : (
@@ -185,7 +190,7 @@ class NewForm extends Component {
                 </Card>
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="4">
-                    <FontAwesomeIcon icon={faTools} /> Repair Data #2
+                    <FontAwesomeIcon icon={faScroll} /> Material Data
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="4">
                     <Card.Body>
@@ -202,7 +207,7 @@ class NewForm extends Component {
                 </Card>
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="5">
-                    <FontAwesomeIcon icon={faTools} /> Repair Data #3
+                    <FontAwesomeIcon icon={faTools} /> Repair Data #2
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="5">
                     <Card.Body>
@@ -244,7 +249,7 @@ class NewForm extends Component {
               >
                 {!isSubmitting ? (
                   <div>
-                    Create File <FontAwesomeIcon icon={faHandPointRight} />
+                    Create File <FontAwesomeIcon icon={faHandPointRight} />{" "}
                     <FontAwesomeIcon icon={faFilePdf} />
                   </div>
                 ) : (
