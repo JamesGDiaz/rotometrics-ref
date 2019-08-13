@@ -380,7 +380,7 @@ export class DocumentTemplate {
             <Row>
               <FieldContainer>
                 <StrongText>Bearer Width:</StrongText>
-                <Text style={styles.text}>{this.props.width}</Text>
+                <Text style={styles.text}>{this.props.bearerWidth}</Text>
               </FieldContainer>
               <FieldContainer>
                 <StrongText>Original Job/Order #.:</StrongText>
