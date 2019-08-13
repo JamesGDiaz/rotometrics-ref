@@ -213,8 +213,8 @@ class Section2 extends Component {
               aria-describedby="inputGroup-sizing-default"
               name="weigth"
               onChange={this.props.handleChange}
-              value={this.props.values.weigth}
-              isInvalid={!!this.props.errors.weigth}
+              value={this.props.values.weight}
+              isInvalid={!!this.props.errors.weight}
             />
           </InputGroup>
 
