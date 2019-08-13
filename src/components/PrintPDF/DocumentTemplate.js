@@ -388,7 +388,7 @@ export class DocumentTemplate {
               </FieldContainer>
               <FieldContainer>
                 <StrongText>Roll DWG:</StrongText>
-                <Text style={styles.text}>{this.props.overallWidth}</Text>
+                <Text style={styles.text}>{this.props.rollDWG}</Text>
               </FieldContainer>
               <FieldContainer>
                 <StrongText>P.D.:</StrongText>
