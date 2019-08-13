@@ -211,7 +211,7 @@ class Section2 extends Component {
             <FormControl
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
-              name="weigth"
+              name="weight"
               onChange={this.props.handleChange}
               value={this.props.values.weight}
               isInvalid={!!this.props.errors.weight}
