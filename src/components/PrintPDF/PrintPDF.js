@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import QRCode from "qrcode";
 import { DocumentTemplate } from "./DocumentTemplate";
 import ErrorAlert from "../ErrorAlert/ErrorAlert";
+import { fromIdToSchema } from "../../methods/SchemaToDict";
 
 class PrintPDF extends Component {
   constructor(props) {
@@ -58,7 +59,7 @@ class PrintPDF extends Component {
         return;
       }
       console.log("Decompression succesful");
-      this.decompressionDidFinish(result);
+      this.decompressionDidFinish(fromIdToSchema(result));
     });
   }
 

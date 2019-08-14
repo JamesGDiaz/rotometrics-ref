@@ -23,6 +23,7 @@ import { Formik } from "formik";
 import newFormSchema from "./NewFormSchema";
 import "./NewForm.css";
 import ErrorAlert from "../ErrorAlert/ErrorAlert";
+import { fromSchemaToId } from "../../methods/SchemaToDict";
 
 class NewForm extends Component {
   listErrors = errors => {
@@ -50,7 +51,7 @@ class NewForm extends Component {
           validationSchema={newFormSchema}
           onChange
           onSubmit={(values, actions) => {
-            let json = JSON.stringify(values);
+            let json = fromSchemaToId(JSON.stringify(values));
             console.log(json);
             zlib.gzip(json, (error, result) => {
               let compressedString = result
