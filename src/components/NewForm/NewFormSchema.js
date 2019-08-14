@@ -160,10 +160,10 @@ const newFormSchema = Yup.object().shape({
    * Additional Info
    */
   sparePartsToBeReturned: Yup.string().max(
-    "40",
-    "too long (limit is 40 characters)"
+    "50",
+    "too long (limit is 50 characters)"
   ),
-  remarks: Yup.string().max("100", "too long (limit is 100 characters)"),
+  remarks: Yup.string().max("150", "too long (limit is 150 characters)"),
   miscProductDescription: Yup.string().max(
     "40",
     "too long (limit is 40 characters)"
