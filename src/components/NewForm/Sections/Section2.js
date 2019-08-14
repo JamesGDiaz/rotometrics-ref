@@ -205,7 +205,7 @@ class Section2 extends Component {
           <InputGroup as={Col} className="mb-3">
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-default">
-                Weigth:
+                Weight:
               </InputGroup.Text>
             </InputGroup.Prepend>
             <FormControl
